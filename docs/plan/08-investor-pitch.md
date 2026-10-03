@@ -1,6 +1,6 @@
 # PLAN-08 — Investor Pitch
 
-Figures are from `docs/research/` and marked where single-sourced or estimated. Update before use.
+Figures are from `docs/archive/research/` and marked where single-sourced or estimated. Update before use.
 
 ## 1. One-liners
 

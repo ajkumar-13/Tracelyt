@@ -25,7 +25,7 @@ Per HRCP-00 §4 and HRCP-02 §92, and sharpened by the research:
 
 ## 4. The seven differentiators, ranked by defensibility
 
-Ordered by how far anyone else is from shipping them, per `docs/research/01` and `02`.
+Ordered by how far anyone else is from shipping them, per `docs/archive/research/01` and `02`.
 
 | # | Differentiator | Closest competitor | Their distance |
 |---|---|---|---|

@@ -1,7 +1,7 @@
 # Company Plan — Index
 
 **Date:** 3 October 2026
-**Status:** Planning baseline, derived from HRCP-00/01/02, the research in `docs/research/`, and founder discussions.
+**Status:** **Source of truth.** The documents in this directory are what the company is built from. HRCP-00/01/02 and the research reports are archived in `docs/archive/` as provenance and are read-only.
 **Operating assumption for this plan set:** a founding team that can hire 100+ engineers and fund them for 24 to 36 months. Where the plan would differ for a small team, it says so.
 
 ## Documents
@@ -18,10 +18,17 @@
 | PLAN-08 | Investor Pitch | Narrative, deck outline, market sizing, competitive FAQ, ask and use of funds |
 | PLAN-09 | Risks and Kill Criteria | Every material risk with mitigation, and the evidence that would make us stop or pivot |
 | PLAN-10 | Metrics and Benchmark | Company, product and research metrics; the Harness Reliability Benchmark |
+| PLAN-11 | Principles, Decision Register and Governance | The constitution: principles, decisions D-001 to D-047, change management, source-of-truth hierarchy. Replaces HRCP-00 |
+| PLAN-12 | Technical Architecture Baseline | Self-contained architecture with the PLAN-05 deltas applied. Replaces HRCP-01 |
+| PLAN-13 | Specification Program | SPEC-01 to SPEC-08: order, owners, required contents, acceptance; ADR and documentation governance |
 
-## Relationship to the HRCP series
+## Reading order
 
-HRCP-00 (constitution) remains the source of truth for principles. This plan set proposes amendments to it, listed in PLAN-05 §1 as explicit decision changes with reasons, per HRCP-02 §81. The future specs HRCP-03 through HRCP-10 should be written from this plan set, in the order given in PLAN-04 Phase 0.
+New team members: PLAN-11 (principles and decisions) → PLAN-01 (thesis) → PLAN-02 (vision) → PLAN-12 (architecture) → PLAN-04 (roadmap) → the stream-specific documents.
+
+## Relationship to the archive
+
+HRCP-00/01/02 (30 September 2026) were the founding documents. On 3 October 2026 the founders decided that `docs/plan/` is the source of truth. PLAN-11 absorbs HRCP-00's principles and decision register with the changes recorded in PLAN-05; PLAN-12 absorbs HRCP-01 with those changes applied; PLAN-04 and PLAN-13 absorb HRCP-02. Section citations such as "HRCP-00 §14" in these documents point to `docs/archive/hrcp/` and remain valid as provenance. Factual claims cite `docs/archive/research/`.
 
 ## Vocabulary used in this plan set
 

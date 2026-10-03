@@ -1,6 +1,6 @@
 # PLAN-05 — Architecture Deltas to HRCP-01
 
-HRCP-01 remains the architecture baseline. This document records what the October 2026 research changes, as proposed decision changes (HRCP-02 §81 format: old, new, reason, evidence, affected components, migration) and new ADR candidates.
+**Status:** Change record. All changes C-1 to C-11 below were **DECIDED on 3 October 2026** after founder review and are incorporated into PLAN-11 (decision register D-026 to D-042) and PLAN-12 (architecture baseline). This document is retained as the required record of old decision, new decision, reason, evidence, affected components and migration (PLAN-11 §6). HRCP-01, the baseline these deltas were written against, is archived at `docs/archive/hrcp/`.
 
 ## 1. Proposed changes to DECIDED and PROPOSED items
 
@@ -8,7 +8,7 @@ HRCP-01 remains the architecture baseline. This document records what the Octobe
 - **Old (HRCP-01 §5 to §7):** capture sources listed; automatic where possible; explicit where needed.
 - **New:** three explicit capture tiers (A native instrumentation, B hook and OTel adapters for closed harnesses, C API and log adapters), each with a published coverage matrix against the event model, and a computed **fidelity level per run** for both graph reconstruction and replay.
 - **Reason:** closed harnesses expose different surfaces (Claude Code 33 hooks plus OTel; Codex 12 hooks plus OTel with gaps in `exec` and `mcp-server`; Cursor hooks only; Devin API only). Pretending uniform capture produces silent gaps in the graph.
-- **Evidence:** `docs/research/03` §B.
+- **Evidence:** `docs/archive/research/03` §B.
 - **Affected:** Capture & Standards, Execution Graph, Replay, UI.
 - **Migration:** none; new.
 
@@ -24,7 +24,7 @@ HRCP-01 remains the architecture baseline. This document records what the Octobe
 - **Old (HRCP-00 §11, D-028):** HEM as our semantic specification, aligned with OTel and OpenInference "where possible".
 - **New:** every control event is proposed upstream as `gen_ai.*` attributes and events; items OTel has not accepted live in a `harness.*` namespace registry with a published mapping. The product consumes both. The HEM name is internal.
 - **Reason:** standards win through implementers. OTel has no convention for compaction, permissions, verification or stop reasons and the open proposals (#159, #181) are unowned. Leading that work is the realistic route to adoption; a private name is not.
-- **Evidence:** `docs/research/03` §A.
+- **Evidence:** `docs/archive/research/03` §A.
 - **Affected:** Capture & Standards, Normalizer.
 - **Migration:** v0.1 event names defined with both forms from the start.
 
@@ -50,7 +50,7 @@ HRCP-01 remains the architecture baseline. This document records what the Octobe
 - **Old (HRCP-02 §21 to §24):** coding agents first; branch replay after deterministic replay.
 - **New:** coding agents (container plus repo SHA plus recorded fixtures) and API-workflow agents (service fixtures and mocks) in parallel from Phase 2; fidelity Level 2 to 3 is the Phase 2 target, Level 4 is Phase 3; branch replay is Phase 3. The replay runner executes customer-side by default (C-2).
 - **Reason:** no standard or product pairs frozen model fixtures with per-step environment snapshots; LangGraph "replay" re-executes LLM calls; Claude Code checkpoints miss Bash side effects. Fidelity disclosure is mandatory to be honest about this.
-- **Evidence:** `docs/research/03` §C.
+- **Evidence:** `docs/archive/research/03` §C.
 
 ### C-8. Regression gate is the commercial lead; replay is its mechanism
 - **Old (HRCP-00 §83 Q3):** whether the first commercial offering begins with incidents or replay is OPEN.
