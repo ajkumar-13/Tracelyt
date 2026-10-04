@@ -1,0 +1,2 @@
+# Benchmark plan — durable stream (ADR-006)
+Candidates: Redpanda, Apache Kafka (managed), NATS JetStream, Postgres queue (alpha only). Workload: the generator above at 50k, 200k, 1M events/s bursts with 10 consumer groups (normalizer, graph, detectors, incidents, economics, export). Measures: end-to-end p95 latency, loss under broker restart, replay of 24 h of history, operational cost. Pass: zero loss on restart, p95 < 500 ms at 200k/s, 24 h replay in under 2 h.

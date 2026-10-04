@@ -1,0 +1,3416 @@
+{
+ "run.started": {
+  "attrs_schema": {
+   "properties": {
+    "task": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Task"
+    },
+    "entrypoint": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Entrypoint"
+    },
+    "permission_mode": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Permission Mode"
+    },
+    "cwd_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cwd Hash"
+    },
+    "source": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Source"
+    }
+   },
+   "title": "RunStartedAttrs",
+   "type": "object"
+  }
+ },
+ "run.resumed": {
+  "attrs_schema": {
+   "properties": {
+    "task": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Task"
+    },
+    "entrypoint": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Entrypoint"
+    },
+    "permission_mode": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Permission Mode"
+    },
+    "cwd_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cwd Hash"
+    },
+    "source": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Source"
+    }
+   },
+   "title": "RunStartedAttrs",
+   "type": "object"
+  }
+ },
+ "run.completed": {
+  "attrs_schema": {
+   "$defs": {
+    "StopReason": {
+     "enum": [
+      "success",
+      "verified_success",
+      "agent_declared_complete",
+      "budget_exhausted",
+      "timeout",
+      "no_progress",
+      "policy_stop",
+      "human_stop",
+      "fatal_error",
+      "external_dependency",
+      "max_turns",
+      "unknown"
+     ],
+     "title": "StopReason",
+     "type": "string"
+    }
+   },
+   "properties": {
+    "stop_reason": {
+     "$ref": "#/$defs/StopReason",
+     "default": "unknown"
+    },
+    "total_turns": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Total Turns"
+    },
+    "duration_ms": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Duration Ms"
+    },
+    "total_cost_usd": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Total Cost Usd"
+    },
+    "input_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Input Tokens"
+    },
+    "output_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Output Tokens"
+    },
+    "cache_read_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cache Read Tokens"
+    },
+    "cache_creation_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cache Creation Tokens"
+    },
+    "num_permission_denials": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Num Permission Denials"
+    },
+    "terminal_reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Terminal Reason"
+    }
+   },
+   "title": "RunEndedAttrs",
+   "type": "object"
+  }
+ },
+ "run.failed": {
+  "attrs_schema": {
+   "$defs": {
+    "StopReason": {
+     "enum": [
+      "success",
+      "verified_success",
+      "agent_declared_complete",
+      "budget_exhausted",
+      "timeout",
+      "no_progress",
+      "policy_stop",
+      "human_stop",
+      "fatal_error",
+      "external_dependency",
+      "max_turns",
+      "unknown"
+     ],
+     "title": "StopReason",
+     "type": "string"
+    }
+   },
+   "properties": {
+    "stop_reason": {
+     "$ref": "#/$defs/StopReason",
+     "default": "unknown"
+    },
+    "total_turns": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Total Turns"
+    },
+    "duration_ms": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Duration Ms"
+    },
+    "total_cost_usd": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Total Cost Usd"
+    },
+    "input_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Input Tokens"
+    },
+    "output_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Output Tokens"
+    },
+    "cache_read_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cache Read Tokens"
+    },
+    "cache_creation_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cache Creation Tokens"
+    },
+    "num_permission_denials": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Num Permission Denials"
+    },
+    "terminal_reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Terminal Reason"
+    }
+   },
+   "title": "RunEndedAttrs",
+   "type": "object"
+  }
+ },
+ "run.aborted": {
+  "attrs_schema": {
+   "$defs": {
+    "StopReason": {
+     "enum": [
+      "success",
+      "verified_success",
+      "agent_declared_complete",
+      "budget_exhausted",
+      "timeout",
+      "no_progress",
+      "policy_stop",
+      "human_stop",
+      "fatal_error",
+      "external_dependency",
+      "max_turns",
+      "unknown"
+     ],
+     "title": "StopReason",
+     "type": "string"
+    }
+   },
+   "properties": {
+    "stop_reason": {
+     "$ref": "#/$defs/StopReason",
+     "default": "unknown"
+    },
+    "total_turns": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Total Turns"
+    },
+    "duration_ms": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Duration Ms"
+    },
+    "total_cost_usd": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Total Cost Usd"
+    },
+    "input_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Input Tokens"
+    },
+    "output_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Output Tokens"
+    },
+    "cache_read_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cache Read Tokens"
+    },
+    "cache_creation_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cache Creation Tokens"
+    },
+    "num_permission_denials": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Num Permission Denials"
+    },
+    "terminal_reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Terminal Reason"
+    }
+   },
+   "title": "RunEndedAttrs",
+   "type": "object"
+  }
+ },
+ "iteration.started": {
+  "attrs_schema": {
+   "properties": {
+    "iteration": {
+     "title": "Iteration",
+     "type": "integer"
+    },
+    "state_hash_before": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "State Hash Before"
+    },
+    "state_hash_after": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "State Hash After"
+    },
+    "budget_remaining_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Budget Remaining Tokens"
+    },
+    "budget_remaining_usd": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Budget Remaining Usd"
+    },
+    "progress_signal": {
+     "anyOf": [
+      {
+       "enum": [
+        "progress",
+        "no_change",
+        "unknown"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Progress Signal"
+    }
+   },
+   "required": [
+    "iteration"
+   ],
+   "title": "IterationAttrs",
+   "type": "object"
+  }
+ },
+ "iteration.completed": {
+  "attrs_schema": {
+   "properties": {
+    "iteration": {
+     "title": "Iteration",
+     "type": "integer"
+    },
+    "state_hash_before": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "State Hash Before"
+    },
+    "state_hash_after": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "State Hash After"
+    },
+    "budget_remaining_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Budget Remaining Tokens"
+    },
+    "budget_remaining_usd": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Budget Remaining Usd"
+    },
+    "progress_signal": {
+     "anyOf": [
+      {
+       "enum": [
+        "progress",
+        "no_change",
+        "unknown"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Progress Signal"
+    }
+   },
+   "required": [
+    "iteration"
+   ],
+   "title": "IterationAttrs",
+   "type": "object"
+  }
+ },
+ "model.request": {
+  "attrs_schema": {
+   "properties": {
+    "provider": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Provider"
+    },
+    "model": {
+     "title": "Model",
+     "type": "string"
+    },
+    "request_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Request Id"
+    },
+    "client_request_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Client Request Id"
+    },
+    "max_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Max Tokens"
+    },
+    "thinking_budget_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Thinking Budget Tokens"
+    },
+    "num_messages": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Num Messages"
+    },
+    "num_tools": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Num Tools"
+    },
+    "tools_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tools Hash"
+    },
+    "system_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "System Hash"
+    },
+    "previous_message_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Previous Message Id"
+    },
+    "context_tokens_estimate": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Context Tokens Estimate"
+    },
+    "query_source": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Query Source"
+    }
+   },
+   "required": [
+    "model"
+   ],
+   "title": "ModelRequestAttrs",
+   "type": "object"
+  }
+ },
+ "model.response": {
+  "attrs_schema": {
+   "properties": {
+    "model": {
+     "title": "Model",
+     "type": "string"
+    },
+    "request_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Request Id"
+    },
+    "message_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Message Id"
+    },
+    "input_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Input Tokens"
+    },
+    "output_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Output Tokens"
+    },
+    "cache_read_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cache Read Tokens"
+    },
+    "cache_creation_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cache Creation Tokens"
+    },
+    "thinking_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Thinking Tokens"
+    },
+    "cost_usd": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Cost Usd"
+    },
+    "duration_ms": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Duration Ms"
+    },
+    "ttft_ms": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Ttft Ms"
+    },
+    "finish_reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Finish Reason"
+    },
+    "num_tool_calls": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Num Tool Calls"
+    },
+    "retry_attempt": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Retry Attempt"
+    },
+    "error_type": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Error Type"
+    }
+   },
+   "required": [
+    "model"
+   ],
+   "title": "ModelResponseAttrs",
+   "type": "object"
+  }
+ },
+ "tool.requested": {
+  "attrs_schema": {
+   "$defs": {
+    "SideEffectClass": {
+     "enum": [
+      "read_only",
+      "reversible_write",
+      "irreversible_write",
+      "financial",
+      "security_sensitive",
+      "external_communication",
+      "unknown"
+     ],
+     "title": "SideEffectClass",
+     "type": "string"
+    }
+   },
+   "properties": {
+    "tool_name": {
+     "title": "Tool Name",
+     "type": "string"
+    },
+    "tool_call_id": {
+     "title": "Tool Call Id",
+     "type": "string"
+    },
+    "tool_source": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tool Source"
+    },
+    "mcp_server": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Mcp Server"
+    },
+    "mcp_tool": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Mcp Tool"
+    },
+    "side_effect_class": {
+     "$ref": "#/$defs/SideEffectClass",
+     "default": "unknown"
+    },
+    "input_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Input Hash"
+    },
+    "input_size_bytes": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Input Size Bytes"
+    },
+    "file_path_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "File Path Hash"
+    },
+    "command_binary": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Command Binary"
+    }
+   },
+   "required": [
+    "tool_name",
+    "tool_call_id"
+   ],
+   "title": "ToolRequestedAttrs",
+   "type": "object"
+  }
+ },
+ "tool.authorized": {
+  "attrs_schema": {
+   "$defs": {
+    "DecisionSource": {
+     "enum": [
+      "config",
+      "hook",
+      "user",
+      "user_permanent",
+      "user_temporary",
+      "user_abort",
+      "user_reject",
+      "classifier",
+      "policy",
+      "headless_default",
+      "unknown"
+     ],
+     "title": "DecisionSource",
+     "type": "string"
+    }
+   },
+   "properties": {
+    "tool_name": {
+     "title": "Tool Name",
+     "type": "string"
+    },
+    "tool_call_id": {
+     "title": "Tool Call Id",
+     "type": "string"
+    },
+    "decision": {
+     "enum": [
+      "allow",
+      "deny",
+      "ask",
+      "defer"
+     ],
+     "title": "Decision",
+     "type": "string"
+    },
+    "source": {
+     "$ref": "#/$defs/DecisionSource",
+     "default": "unknown"
+    },
+    "rule": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Rule"
+    },
+    "reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Reason"
+    }
+   },
+   "required": [
+    "tool_name",
+    "tool_call_id",
+    "decision"
+   ],
+   "title": "ToolDecisionAttrs",
+   "type": "object"
+  }
+ },
+ "tool.rejected": {
+  "attrs_schema": {
+   "$defs": {
+    "DecisionSource": {
+     "enum": [
+      "config",
+      "hook",
+      "user",
+      "user_permanent",
+      "user_temporary",
+      "user_abort",
+      "user_reject",
+      "classifier",
+      "policy",
+      "headless_default",
+      "unknown"
+     ],
+     "title": "DecisionSource",
+     "type": "string"
+    }
+   },
+   "properties": {
+    "tool_name": {
+     "title": "Tool Name",
+     "type": "string"
+    },
+    "tool_call_id": {
+     "title": "Tool Call Id",
+     "type": "string"
+    },
+    "decision": {
+     "enum": [
+      "allow",
+      "deny",
+      "ask",
+      "defer"
+     ],
+     "title": "Decision",
+     "type": "string"
+    },
+    "source": {
+     "$ref": "#/$defs/DecisionSource",
+     "default": "unknown"
+    },
+    "rule": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Rule"
+    },
+    "reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Reason"
+    }
+   },
+   "required": [
+    "tool_name",
+    "tool_call_id",
+    "decision"
+   ],
+   "title": "ToolDecisionAttrs",
+   "type": "object"
+  }
+ },
+ "tool.started": {
+  "attrs_schema": {
+   "$defs": {
+    "SideEffectClass": {
+     "enum": [
+      "read_only",
+      "reversible_write",
+      "irreversible_write",
+      "financial",
+      "security_sensitive",
+      "external_communication",
+      "unknown"
+     ],
+     "title": "SideEffectClass",
+     "type": "string"
+    }
+   },
+   "properties": {
+    "tool_name": {
+     "title": "Tool Name",
+     "type": "string"
+    },
+    "tool_call_id": {
+     "title": "Tool Call Id",
+     "type": "string"
+    },
+    "tool_source": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tool Source"
+    },
+    "mcp_server": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Mcp Server"
+    },
+    "mcp_tool": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Mcp Tool"
+    },
+    "side_effect_class": {
+     "$ref": "#/$defs/SideEffectClass",
+     "default": "unknown"
+    },
+    "input_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Input Hash"
+    },
+    "input_size_bytes": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Input Size Bytes"
+    },
+    "file_path_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "File Path Hash"
+    },
+    "command_binary": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Command Binary"
+    }
+   },
+   "required": [
+    "tool_name",
+    "tool_call_id"
+   ],
+   "title": "ToolRequestedAttrs",
+   "type": "object"
+  }
+ },
+ "tool.completed": {
+  "attrs_schema": {
+   "properties": {
+    "tool_name": {
+     "title": "Tool Name",
+     "type": "string"
+    },
+    "tool_call_id": {
+     "title": "Tool Call Id",
+     "type": "string"
+    },
+    "success": {
+     "title": "Success",
+     "type": "boolean"
+    },
+    "duration_ms": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Duration Ms"
+    },
+    "output_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Output Hash"
+    },
+    "output_size_bytes": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Output Size Bytes"
+    },
+    "error_type": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Error Type"
+    },
+    "error_message_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Error Message Hash"
+    },
+    "exit_code": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Exit Code"
+    },
+    "files_created": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Files Created"
+    },
+    "files_modified": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Files Modified"
+    },
+    "lines_added": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Lines Added"
+    },
+    "lines_removed": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Lines Removed"
+    }
+   },
+   "required": [
+    "tool_name",
+    "tool_call_id",
+    "success"
+   ],
+   "title": "ToolResultAttrs",
+   "type": "object"
+  }
+ },
+ "tool.failed": {
+  "attrs_schema": {
+   "properties": {
+    "tool_name": {
+     "title": "Tool Name",
+     "type": "string"
+    },
+    "tool_call_id": {
+     "title": "Tool Call Id",
+     "type": "string"
+    },
+    "success": {
+     "title": "Success",
+     "type": "boolean"
+    },
+    "duration_ms": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Duration Ms"
+    },
+    "output_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Output Hash"
+    },
+    "output_size_bytes": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Output Size Bytes"
+    },
+    "error_type": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Error Type"
+    },
+    "error_message_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Error Message Hash"
+    },
+    "exit_code": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Exit Code"
+    },
+    "files_created": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Files Created"
+    },
+    "files_modified": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Files Modified"
+    },
+    "lines_added": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Lines Added"
+    },
+    "lines_removed": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Lines Removed"
+    }
+   },
+   "required": [
+    "tool_name",
+    "tool_call_id",
+    "success"
+   ],
+   "title": "ToolResultAttrs",
+   "type": "object"
+  }
+ },
+ "context.compact": {
+  "attrs_schema": {
+   "properties": {
+    "trigger": {
+     "default": "unknown",
+     "enum": [
+      "auto",
+      "manual",
+      "policy",
+      "unknown"
+     ],
+     "title": "Trigger",
+     "type": "string"
+    },
+    "tokens_before": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tokens Before"
+    },
+    "tokens_after": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tokens After"
+    },
+    "tokens_dropped": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tokens Dropped"
+    },
+    "duration_ms": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Duration Ms"
+    },
+    "policy_version": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Policy Version"
+    },
+    "preserved_head_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Preserved Head Id"
+    },
+    "preserved_anchor_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Preserved Anchor Id"
+    },
+    "preserved_tail_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Preserved Tail Id"
+    },
+    "num_preserved_messages": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Num Preserved Messages"
+    },
+    "custom_instructions_present": {
+     "anyOf": [
+      {
+       "type": "boolean"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Custom Instructions Present"
+    },
+    "declared_keys_total": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Declared Keys Total"
+    },
+    "declared_keys_surviving": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Declared Keys Surviving"
+    }
+   },
+   "title": "ContextCompactAttrs",
+   "type": "object"
+  }
+ },
+ "context.provenance.loaded": {
+  "attrs_schema": {
+   "properties": {
+    "source_kind": {
+     "title": "Source Kind",
+     "type": "string"
+    },
+    "source_id_hash": {
+     "title": "Source Id Hash",
+     "type": "string"
+    },
+    "source_name_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Source Name Hash"
+    },
+    "load_reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Load Reason"
+    },
+    "content_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Content Hash"
+    },
+    "tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tokens"
+    }
+   },
+   "required": [
+    "source_kind",
+    "source_id_hash"
+   ],
+   "title": "ContextProvenanceLoadedAttrs",
+   "type": "object"
+  }
+ },
+ "permission.requested": {
+  "attrs_schema": {
+   "$defs": {
+    "DecisionSource": {
+     "enum": [
+      "config",
+      "hook",
+      "user",
+      "user_permanent",
+      "user_temporary",
+      "user_abort",
+      "user_reject",
+      "classifier",
+      "policy",
+      "headless_default",
+      "unknown"
+     ],
+     "title": "DecisionSource",
+     "type": "string"
+    }
+   },
+   "properties": {
+    "actor": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Actor"
+    },
+    "resource": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Resource"
+    },
+    "action": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Action"
+    },
+    "tool_call_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tool Call Id"
+    },
+    "decision": {
+     "anyOf": [
+      {
+       "enum": [
+        "granted",
+        "denied",
+        "pending"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Decision"
+    },
+    "source": {
+     "$ref": "#/$defs/DecisionSource",
+     "default": "unknown"
+    },
+    "policy_version": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Policy Version"
+    },
+    "reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Reason"
+    },
+    "classifier_verdict": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Classifier Verdict"
+    },
+    "num_suggested_rules": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Num Suggested Rules"
+    }
+   },
+   "title": "PermissionAttrs",
+   "type": "object"
+  }
+ },
+ "permission.granted": {
+  "attrs_schema": {
+   "$defs": {
+    "DecisionSource": {
+     "enum": [
+      "config",
+      "hook",
+      "user",
+      "user_permanent",
+      "user_temporary",
+      "user_abort",
+      "user_reject",
+      "classifier",
+      "policy",
+      "headless_default",
+      "unknown"
+     ],
+     "title": "DecisionSource",
+     "type": "string"
+    }
+   },
+   "properties": {
+    "actor": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Actor"
+    },
+    "resource": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Resource"
+    },
+    "action": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Action"
+    },
+    "tool_call_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tool Call Id"
+    },
+    "decision": {
+     "anyOf": [
+      {
+       "enum": [
+        "granted",
+        "denied",
+        "pending"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Decision"
+    },
+    "source": {
+     "$ref": "#/$defs/DecisionSource",
+     "default": "unknown"
+    },
+    "policy_version": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Policy Version"
+    },
+    "reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Reason"
+    },
+    "classifier_verdict": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Classifier Verdict"
+    },
+    "num_suggested_rules": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Num Suggested Rules"
+    }
+   },
+   "title": "PermissionAttrs",
+   "type": "object"
+  }
+ },
+ "permission.denied": {
+  "attrs_schema": {
+   "$defs": {
+    "DecisionSource": {
+     "enum": [
+      "config",
+      "hook",
+      "user",
+      "user_permanent",
+      "user_temporary",
+      "user_abort",
+      "user_reject",
+      "classifier",
+      "policy",
+      "headless_default",
+      "unknown"
+     ],
+     "title": "DecisionSource",
+     "type": "string"
+    }
+   },
+   "properties": {
+    "actor": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Actor"
+    },
+    "resource": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Resource"
+    },
+    "action": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Action"
+    },
+    "tool_call_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tool Call Id"
+    },
+    "decision": {
+     "anyOf": [
+      {
+       "enum": [
+        "granted",
+        "denied",
+        "pending"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Decision"
+    },
+    "source": {
+     "$ref": "#/$defs/DecisionSource",
+     "default": "unknown"
+    },
+    "policy_version": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Policy Version"
+    },
+    "reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Reason"
+    },
+    "classifier_verdict": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Classifier Verdict"
+    },
+    "num_suggested_rules": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Num Suggested Rules"
+    }
+   },
+   "title": "PermissionAttrs",
+   "type": "object"
+  }
+ },
+ "agent.spawned": {
+  "attrs_schema": {
+   "properties": {
+    "child_agent_instance_id": {
+     "title": "Child Agent Instance Id",
+     "type": "string"
+    },
+    "child_agent_definition": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Child Agent Definition"
+    },
+    "via_tool_call_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Via Tool Call Id"
+    },
+    "is_async": {
+     "anyOf": [
+      {
+       "type": "boolean"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Is Async"
+    },
+    "model": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Model"
+    },
+    "task_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Task Hash"
+    },
+    "shared_context_hashes": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Shared Context Hashes",
+     "type": "array"
+    },
+    "budget_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Budget Tokens"
+    }
+   },
+   "required": [
+    "child_agent_instance_id"
+   ],
+   "title": "AgentSpawnedAttrs",
+   "type": "object"
+  }
+ },
+ "agent.returned": {
+  "attrs_schema": {
+   "properties": {
+    "child_agent_instance_id": {
+     "title": "Child Agent Instance Id",
+     "type": "string"
+    },
+    "total_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Total Tokens"
+    },
+    "total_tool_uses": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Total Tool Uses"
+    },
+    "duration_ms": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Duration Ms"
+    },
+    "model_swapped": {
+     "anyOf": [
+      {
+       "type": "boolean"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Model Swapped"
+    },
+    "result_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Result Hash"
+    },
+    "status": {
+     "anyOf": [
+      {
+       "enum": [
+        "ok",
+        "error",
+        "cancelled"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Status"
+    }
+   },
+   "required": [
+    "child_agent_instance_id"
+   ],
+   "title": "AgentReturnedAttrs",
+   "type": "object"
+  }
+ },
+ "agent.cancelled": {
+  "attrs_schema": {
+   "properties": {
+    "child_agent_instance_id": {
+     "title": "Child Agent Instance Id",
+     "type": "string"
+    },
+    "total_tokens": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Total Tokens"
+    },
+    "total_tool_uses": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Total Tool Uses"
+    },
+    "duration_ms": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Duration Ms"
+    },
+    "model_swapped": {
+     "anyOf": [
+      {
+       "type": "boolean"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Model Swapped"
+    },
+    "result_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Result Hash"
+    },
+    "status": {
+     "anyOf": [
+      {
+       "enum": [
+        "ok",
+        "error",
+        "cancelled"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Status"
+    }
+   },
+   "required": [
+    "child_agent_instance_id"
+   ],
+   "title": "AgentReturnedAttrs",
+   "type": "object"
+  }
+ },
+ "verify.requested": {
+  "attrs_schema": {
+   "properties": {
+    "claim": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Claim"
+    },
+    "claim_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Claim Hash"
+    },
+    "evaluator": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Evaluator"
+    },
+    "policy": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Policy"
+    },
+    "threshold": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Threshold"
+    },
+    "outcome": {
+     "anyOf": [
+      {
+       "enum": [
+        "passed",
+        "failed",
+        "abstained",
+        "pending"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Outcome"
+    },
+    "evidence_hashes": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Evidence Hashes",
+     "type": "array"
+    },
+    "exit_code": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Exit Code"
+    },
+    "tests_total": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tests Total"
+    },
+    "tests_failed": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tests Failed"
+    }
+   },
+   "title": "VerifyAttrs",
+   "type": "object"
+  }
+ },
+ "verify.evidence": {
+  "attrs_schema": {
+   "properties": {
+    "claim": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Claim"
+    },
+    "claim_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Claim Hash"
+    },
+    "evaluator": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Evaluator"
+    },
+    "policy": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Policy"
+    },
+    "threshold": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Threshold"
+    },
+    "outcome": {
+     "anyOf": [
+      {
+       "enum": [
+        "passed",
+        "failed",
+        "abstained",
+        "pending"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Outcome"
+    },
+    "evidence_hashes": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Evidence Hashes",
+     "type": "array"
+    },
+    "exit_code": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Exit Code"
+    },
+    "tests_total": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tests Total"
+    },
+    "tests_failed": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tests Failed"
+    }
+   },
+   "title": "VerifyAttrs",
+   "type": "object"
+  }
+ },
+ "verify.passed": {
+  "attrs_schema": {
+   "properties": {
+    "claim": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Claim"
+    },
+    "claim_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Claim Hash"
+    },
+    "evaluator": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Evaluator"
+    },
+    "policy": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Policy"
+    },
+    "threshold": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Threshold"
+    },
+    "outcome": {
+     "anyOf": [
+      {
+       "enum": [
+        "passed",
+        "failed",
+        "abstained",
+        "pending"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Outcome"
+    },
+    "evidence_hashes": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Evidence Hashes",
+     "type": "array"
+    },
+    "exit_code": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Exit Code"
+    },
+    "tests_total": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tests Total"
+    },
+    "tests_failed": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tests Failed"
+    }
+   },
+   "title": "VerifyAttrs",
+   "type": "object"
+  }
+ },
+ "verify.failed": {
+  "attrs_schema": {
+   "properties": {
+    "claim": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Claim"
+    },
+    "claim_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Claim Hash"
+    },
+    "evaluator": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Evaluator"
+    },
+    "policy": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Policy"
+    },
+    "threshold": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Threshold"
+    },
+    "outcome": {
+     "anyOf": [
+      {
+       "enum": [
+        "passed",
+        "failed",
+        "abstained",
+        "pending"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Outcome"
+    },
+    "evidence_hashes": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Evidence Hashes",
+     "type": "array"
+    },
+    "exit_code": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Exit Code"
+    },
+    "tests_total": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tests Total"
+    },
+    "tests_failed": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tests Failed"
+    }
+   },
+   "title": "VerifyAttrs",
+   "type": "object"
+  }
+ },
+ "verify.abstained": {
+  "attrs_schema": {
+   "properties": {
+    "claim": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Claim"
+    },
+    "claim_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Claim Hash"
+    },
+    "evaluator": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Evaluator"
+    },
+    "policy": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Policy"
+    },
+    "threshold": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Threshold"
+    },
+    "outcome": {
+     "anyOf": [
+      {
+       "enum": [
+        "passed",
+        "failed",
+        "abstained",
+        "pending"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Outcome"
+    },
+    "evidence_hashes": {
+     "items": {
+      "type": "string"
+     },
+     "title": "Evidence Hashes",
+     "type": "array"
+    },
+    "exit_code": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Exit Code"
+    },
+    "tests_total": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tests Total"
+    },
+    "tests_failed": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tests Failed"
+    }
+   },
+   "title": "VerifyAttrs",
+   "type": "object"
+  }
+ },
+ "stop": {
+  "attrs_schema": {
+   "$defs": {
+    "StopReason": {
+     "enum": [
+      "success",
+      "verified_success",
+      "agent_declared_complete",
+      "budget_exhausted",
+      "timeout",
+      "no_progress",
+      "policy_stop",
+      "human_stop",
+      "fatal_error",
+      "external_dependency",
+      "max_turns",
+      "unknown"
+     ],
+     "title": "StopReason",
+     "type": "string"
+    }
+   },
+   "properties": {
+    "reason": {
+     "$ref": "#/$defs/StopReason"
+    },
+    "declared_by": {
+     "anyOf": [
+      {
+       "enum": [
+        "agent",
+        "harness",
+        "human",
+        "policy",
+        "budget",
+        "error"
+       ],
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Declared By"
+    },
+    "verification_present": {
+     "anyOf": [
+      {
+       "type": "boolean"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Verification Present"
+    },
+    "native_reason": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Native Reason"
+    }
+   },
+   "required": [
+    "reason"
+   ],
+   "title": "StopAttrs",
+   "type": "object"
+  }
+ }
+}

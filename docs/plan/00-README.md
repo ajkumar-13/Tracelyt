@@ -20,6 +20,7 @@
 | PLAN-10 | Metrics and Benchmark | Company, product and research metrics; the Harness Reliability Benchmark |
 | PLAN-11 | Principles, Decision Register and Governance | The constitution: principles, decisions D-001 to D-047, change management, source-of-truth hierarchy. Replaces HRCP-00 |
 | PLAN-12 | Technical Architecture Baseline | Self-contained architecture with the PLAN-05 deltas applied. Replaces HRCP-01 |
+| PLAN-14 | Phase 0 Amendments | Decision changes with evidence recorded after Phase 0 |
 | PLAN-13 | Specification Program | SPEC-01 to SPEC-08: order, owners, required contents, acceptance; ADR and documentation governance |
 
 ## Reading order
@@ -42,3 +43,7 @@ HRCP-00/01/02 (30 September 2026) were the founding documents. On 3 October 2026
 ## Working name
 
 "Tracelyt" is a placeholder and collides with existing products (see research assessment §3.8). A naming decision is a Phase 0 deliverable.
+
+## Phase 0 outputs
+
+Phase 0 ran on 4 October 2026. Start at `docs/phase0/99-gate-report.md`. Specifications are in `docs/specs/`, ADRs in `docs/adrs/`, the reference implementation in `src/harness_engine/` with real Claude Code captures under `tests/fixtures/`.

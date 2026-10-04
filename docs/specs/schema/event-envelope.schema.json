@@ -1,0 +1,497 @@
+{
+ "$defs": {
+  "CaptureTier": {
+   "enum": [
+    "A",
+    "B",
+    "C"
+   ],
+   "title": "CaptureTier",
+   "type": "string"
+  },
+  "Component": {
+   "description": "Harness components. Also the component dimension of the failure taxonomy (PLAN-11 D-035).",
+   "enum": [
+    "model",
+    "planner",
+    "loop",
+    "context_builder",
+    "compactor",
+    "memory",
+    "retrieval",
+    "tool",
+    "mcp",
+    "permission",
+    "hook",
+    "sandbox",
+    "state",
+    "delegation",
+    "verification",
+    "artifact",
+    "budget",
+    "stop",
+    "environment",
+    "human",
+    "external_dependency",
+    "unknown"
+   ],
+   "title": "Component",
+   "type": "string"
+  },
+  "EventType": {
+   "enum": [
+    "run.started",
+    "run.resumed",
+    "run.completed",
+    "run.failed",
+    "run.aborted",
+    "iteration.started",
+    "iteration.completed",
+    "model.request",
+    "model.response",
+    "tool.requested",
+    "tool.authorized",
+    "tool.rejected",
+    "tool.started",
+    "tool.completed",
+    "tool.failed",
+    "context.build",
+    "context.compact",
+    "context.provenance.loaded",
+    "permission.requested",
+    "permission.granted",
+    "permission.denied",
+    "agent.spawned",
+    "agent.returned",
+    "agent.cancelled",
+    "verify.requested",
+    "verify.evidence",
+    "verify.passed",
+    "verify.failed",
+    "verify.abstained",
+    "stop",
+    "unknown"
+   ],
+   "title": "EventType",
+   "type": "string"
+  },
+  "Identity": {
+   "description": "Execution identity. Never conflate these (PLAN-12 \u00a77).",
+   "properties": {
+    "organization_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Organization Id"
+    },
+    "project_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Project Id"
+    },
+    "run_id": {
+     "title": "Run Id",
+     "type": "string"
+    },
+    "session_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Session Id"
+    },
+    "agent_definition": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Agent Definition"
+    },
+    "agent_instance_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Agent Instance Id"
+    },
+    "parent_agent_instance_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Parent Agent Instance Id"
+    },
+    "iteration": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Iteration"
+    },
+    "turn_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Turn Id"
+    },
+    "trace_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Trace Id"
+    },
+    "span_id": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Span Id"
+    }
+   },
+   "required": [
+    "run_id"
+   ],
+   "title": "Identity",
+   "type": "object"
+  },
+  "PayloadRef": {
+   "description": "Content-addressed reference. Content stays customer-side; events carry only this.",
+   "properties": {
+    "sha256": {
+     "maxLength": 64,
+     "minLength": 64,
+     "title": "Sha256",
+     "type": "string"
+    },
+    "size_bytes": {
+     "minimum": 0,
+     "title": "Size Bytes",
+     "type": "integer"
+    },
+    "media_type": {
+     "default": "application/json",
+     "title": "Media Type",
+     "type": "string"
+    },
+    "uri": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Uri"
+    },
+    "redaction": {
+     "default": "none",
+     "enum": [
+      "none",
+      "partial",
+      "full",
+      "hashed"
+     ],
+     "title": "Redaction",
+     "type": "string"
+    }
+   },
+   "required": [
+    "sha256",
+    "size_bytes"
+   ],
+   "title": "PayloadRef",
+   "type": "object"
+  },
+  "Versions": {
+   "properties": {
+    "harness": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Harness"
+    },
+    "harness_config_hash": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Harness Config Hash"
+    },
+    "model": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Model"
+    },
+    "prompt": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Prompt"
+    },
+    "policy": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Policy"
+    },
+    "tools": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Tools"
+    },
+    "code_commit": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Code Commit"
+    },
+    "runtime_image": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "title": "Runtime Image"
+    }
+   },
+   "title": "Versions",
+   "type": "object"
+  }
+ },
+ "description": "Envelope. `attrs` is validated against the per-type model in ATTR_MODELS when present.",
+ "properties": {
+  "event_id": {
+   "title": "Event Id",
+   "type": "string"
+  },
+  "type": {
+   "$ref": "#/$defs/EventType"
+  },
+  "native_type": {
+   "anyOf": [
+    {
+     "type": "string"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Native Type"
+  },
+  "timestamp": {
+   "format": "date-time",
+   "title": "Timestamp",
+   "type": "string"
+  },
+  "sequence": {
+   "anyOf": [
+    {
+     "type": "integer"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Sequence"
+  },
+  "identity": {
+   "$ref": "#/$defs/Identity"
+  },
+  "versions": {
+   "$ref": "#/$defs/Versions"
+  },
+  "component": {
+   "$ref": "#/$defs/Component"
+  },
+  "counterpart": {
+   "anyOf": [
+    {
+     "$ref": "#/$defs/Component"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null
+  },
+  "parent_event_id": {
+   "anyOf": [
+    {
+     "type": "string"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Parent Event Id"
+  },
+  "correlation": {
+   "additionalProperties": {
+    "type": "string"
+   },
+   "title": "Correlation",
+   "type": "object"
+  },
+  "status": {
+   "anyOf": [
+    {
+     "enum": [
+      "ok",
+      "error",
+      "denied",
+      "cancelled",
+      "unknown"
+     ],
+     "type": "string"
+    },
+    {
+     "type": "null"
+    }
+   ],
+   "default": null,
+   "title": "Status"
+  },
+  "attrs": {
+   "additionalProperties": true,
+   "title": "Attrs",
+   "type": "object"
+  },
+  "payload_refs": {
+   "additionalProperties": {
+    "$ref": "#/$defs/PayloadRef"
+   },
+   "title": "Payload Refs",
+   "type": "object"
+  },
+  "capture_tier": {
+   "$ref": "#/$defs/CaptureTier"
+  },
+  "source_channel": {
+   "title": "Source Channel",
+   "type": "string"
+  },
+  "schema_version": {
+   "default": "0.1.0",
+   "title": "Schema Version",
+   "type": "string"
+  }
+ },
+ "required": [
+  "event_id",
+  "type",
+  "timestamp",
+  "identity",
+  "component",
+  "capture_tier",
+  "source_channel"
+ ],
+ "title": "Event",
+ "type": "object"
+}

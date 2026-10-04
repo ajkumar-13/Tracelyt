@@ -1,0 +1,7 @@
+# Benchmark plan — analytical store (ADR-005)
+**Goal:** choose between ClickHouse and alternatives for fleet telemetry and adjacency-table graphs before Phase 1 scale.
+**Workload generator (spec):** `scripts/bench/gen_events.py` (Phase 1) synthesizes SPEC-01 events from the Proof A/E fixtures as templates: N runs × mean 60 events, 5% of runs with compaction, 10% with subagents, 3% with ≥50 tool calls; attributes drawn from realistic cardinalities (10k tool names incl. MCP, 500 models, 50k harness config hashes, 1M run ids per day). Adjacency rows per run as in `graph/builder.py`.
+**Scale points:** 10M, 100M, 1B, 10B events; 7-, 30-, 90-day windows; three retention tiers.
+**Queries:** (Q1) reconstruct one run ordered by time and sequence; (Q2) cohort: all runs for harness version X with stop_reason budget_exhausted in a window; (Q3) failure-rate by harness version per hour; (Q4) all tool requests with input_hash H across the fleet (doom-loop fleet view); (Q5) lineage traversal: compacted_from edges for a run; (Q6) first-divergence candidate aggregation across 1k runs; (Q7) cost per verified success by model and version.
+**Measures:** p50/p95 latency per query at each scale, ingest events/s, storage bytes per event per tier, cost per million events per month.
+**Pass:** Q1 p95 < 300 ms, Q2/Q3 p95 < 2 s at 1B, Q5 p95 < 1 s, ingest ≥ 200k events/s per node; otherwise evaluate alternatives.

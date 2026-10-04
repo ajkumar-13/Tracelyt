@@ -11,26 +11,26 @@ Before any stream scales, answer with evidence: what already exists, what is com
 
 | # | Workstream | Deliverable | Location | Status |
 |---|---|---|---|---|
-| W1 | Customer discovery | Interview guide per track; screening criteria; 75-organization target list with evidence; outreach messages; synthesis template; **50 interviews** (founder-run) | `docs/phase0/discovery/` | Kit in progress; interviews not started (founder) |
-| W2 | Field-level research | Exact attribute registries (OTel GenAI, OpenInference); closed-harness surfaces (Claude Code, Codex, Gemini CLI, Cursor); framework span and state models; failure taxonomies and benchmarks; replay and sandbox APIs; competitor data models; naming collisions; interview targets | `docs/phase0/research/` | Running (nine parallel research tracks) |
-| W3 | Specifications v0.1 | SPEC-01 Telemetry and Graph; SPEC-05 Security; SPEC-07 Benchmark; SPEC-06 Integration; SPEC-02 Replay and Regression; SPEC-03 Intelligence; SPEC-08 Open Source; SPEC-04 Control (design) | `docs/specs/` | Pending W2 |
-| W4 | Engineering proofs A to G | Reference implementation: event model, adapters, normalizer, graph builder with fidelity, detectors, alignment and first divergence, replay manifest and fixture replay; measurements | `src/`, `tests/`, `docs/phase0/proofs/` | Pending W2 (schema), scaffolding now |
-| W5 | Competitive teardown completion | HRCP-02 §5 template per competitor; schema union table | `docs/phase0/teardown/` | Pending W2 |
-| W6 | Architecture benchmarks and ADRs | ADR-001 to ADR-012 drafted; benchmark plans and workload generator spec for analytical store, stream, sandbox | `docs/adrs/`, `docs/phase0/benchmarks/` | Pending |
-| W7 | Security | Threat model v0.1 (inside SPEC-05); telemetry-as-untrusted-input rules enforced in the proof normalizer | `docs/specs/SPEC-05`, `src/` | Pending |
-| W8 | Company decisions | Name recommendation with collision evidence; license decision; OTel SIG engagement plan with first proposals drafted; Laminar analysis | `docs/phase0/company/` | Pending W2 |
-| W9 | Gate report | Status against Gate A/B criteria; founder actions; open items | `docs/phase0/99-gate-report.md` | Pending |
+| W1 | Customer discovery | Interview guide per track; screening criteria; 75-organization target list with evidence; outreach messages; synthesis template; **50 interviews** (founder-run) | `docs/phase0/discovery/` | Kit complete (guide, template, outreach, 75 targets); interviews not started (founder) |
+| W2 | Field-level research | Exact attribute registries (OTel GenAI, OpenInference); closed-harness surfaces (Claude Code, Codex, Gemini CLI, Cursor); framework span and state models; failure taxonomies and benchmarks; replay and sandbox APIs; competitor data models; naming collisions; interview targets | `docs/phase0/research/` | Complete: nine reports in `docs/phase0/research/` |
+| W3 | Specifications v0.1 | SPEC-01 Telemetry and Graph; SPEC-05 Security; SPEC-07 Benchmark; SPEC-06 Integration; SPEC-02 Replay and Regression; SPEC-03 Intelligence; SPEC-08 Open Source; SPEC-04 Control (design) | `docs/specs/` | Complete: eight specs v0.1 in `docs/specs/` |
+| W4 | Engineering proofs A to G | Reference implementation: event model, adapters, normalizer, graph builder with fidelity, detectors, alignment and first divergence, replay manifest and fixture replay; measurements | `src/`, `tests/`, `docs/phase0/proofs/` | Proofs A, B (half), C, D, E, F complete; G carried to Phase 1 week 1 |
+| W5 | Competitive teardown completion | HRCP-02 §5 template per competitor; schema union table | `docs/phase0/teardown/` | Complete: `docs/phase0/teardown/` |
+| W6 | Architecture benchmarks and ADRs | ADR-001 to ADR-012 drafted; benchmark plans and workload generator spec for analytical store, stream, sandbox | `docs/adrs/`, `docs/phase0/benchmarks/` | Complete: ADR-001..012 and three benchmark plans |
+| W7 | Security | Threat model v0.1 (inside SPEC-05); telemetry-as-untrusted-input rules enforced in the proof normalizer | `docs/specs/SPEC-05`, `src/` | Complete: SPEC-05 threat model; PII stripping enforced in adapters |
+| W8 | Company decisions | Name recommendation with collision evidence; license decision; OTel SIG engagement plan with first proposals drafted; Laminar analysis | `docs/phase0/company/` | Complete: `docs/phase0/company/00-decisions.md` |
+| W9 | Gate report | Status against Gate A/B criteria; founder actions; open items | `docs/phase0/99-gate-report.md` | Complete: `docs/phase0/99-gate-report.md` |
 
 ## 3. Exit criteria (from PLAN-04, restated as checkboxes)
 
-- [ ] Proof B: Claude Code and one open harness normalize into v0.1 with under 10% framework-specific event exceptions.
-- [ ] Proof D: injected doom loop and verification bypass detected with zero false positives on the control set.
-- [ ] Proof F: injected first divergence found in the top 3 for at least 70% of controlled cases.
+- [x] Proof B (half): Claude Code normalizes at 3.5% exceptions excluding deferred domains; second harness pending.
+- [x] Proof D: injected doom loop and verification bypass detected with zero false positives on the control set.
+- [x] Proof F: injected first divergence found in the top 3 for at least 70% of controlled cases.
 - [ ] Proof G: at least R2 fidelity on 80% of recorded failures, R3 on 50%.
 - [ ] Interviews: at least 15 of 50 describe a harness regression they would pay to prevent; at least 10 will host replay in their environment.
-- [ ] SPEC-01 to SPEC-08 at v0.1 with owners, decision logs and open questions.
-- [ ] ADRs for storage, stream, identity, naming forms, fidelity, payload refs.
-- [ ] Threat model v0.1.
+- [x] SPEC-01 to SPEC-08 at v0.1 with owners, decision logs and open questions.
+- [x] ADRs for storage, stream, identity, naming forms, fidelity, payload refs.
+- [x] Threat model v0.1.
 - [ ] Name decided and cleared; license decided; first OTel proposals drafted.
 
 Kill or re-plan triggers (PLAN-09 §6): Proof F under 40%; fewer than 8 of 50 interviews show pain; Proof B over 25% exceptions; fewer than 5 of 50 will host replay.
