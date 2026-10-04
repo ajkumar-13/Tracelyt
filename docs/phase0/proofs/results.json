@@ -1,0 +1,250 @@
+{
+ "proofs": {
+  "B_exception_rate_proofA": {
+   "all_records": 0.5567,
+   "excluding_hook_domain": 0.0345,
+   "unmapped_names": {
+    "managed_settings_resolved": 2,
+    "hook_registered": 44,
+    "plugin_loaded": 6,
+    "hook_execution_start": 27,
+    "hook_execution_complete": 27,
+    "assistant_response": 7
+   }
+  },
+  "C_graph_proofA": {
+   "nodes": 64,
+   "edges": 117,
+   "fidelity": "G3",
+   "reasons": [
+    "all 9 tool requests closed by result or block",
+    "context provenance present; compactions carry summary ref and token counts"
+   ],
+   "edges_by_rel_and_source": {
+    "parent_of/runtime": 63,
+    "approved_by/runtime": 9,
+    "produces/runtime": 9,
+    "requested_by/normalizer": 7,
+    "delegated_to/runtime": 2,
+    "returned_to/runtime": 1,
+    "loaded_into/runtime": 3,
+    "compacted_from/normalizer": 23
+   }
+  },
+  "D_detectors": {
+   "proofD/loop": {
+    "findings": [
+     "D1",
+     "D3",
+     "D4",
+     "D5",
+     "D6"
+    ],
+    "detail": [
+     "8 identical Bash calls, 8 failed, no state change",
+     "8 consecutive Bash failures",
+     "4 consecutive iterations with tool failures and no artifact or verification progress",
+     "$0.0154 spent over 4 iterations with 3 failures and no success",
+     "completion declared without a passed verification"
+    ],
+    "fidelity": "G3",
+    "exception_rate_excl_hook": 0.0282
+   },
+   "proofD/bypass": {
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "exception_rate_excl_hook": 0.0299
+   },
+   "proofD/control": {
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "exception_rate_excl_hook": 0.0299
+   },
+   "proofE/S-1": {
+    "cohort": "S",
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "n_events": 68
+   },
+   "proofE/S-2": {
+    "cohort": "S",
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "n_events": 67
+   },
+   "proofE/S-3": {
+    "cohort": "S",
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "n_events": 67
+   },
+   "proofE/S-4": {
+    "cohort": "S",
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "n_events": 67
+   },
+   "proofE/S-5": {
+    "cohort": "S",
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "n_events": 67
+   },
+   "proofE/F1-1": {
+    "cohort": "F1",
+    "findings": [
+     "D6"
+    ],
+    "detail": [
+     "completion declared without a passed verification (verification attempted but blocked)"
+    ],
+    "fidelity": "G4",
+    "n_events": 68
+   },
+   "proofE/F1-2": {
+    "cohort": "F1",
+    "findings": [
+     "D6"
+    ],
+    "detail": [
+     "completion declared without a passed verification (verification attempted but blocked)"
+    ],
+    "fidelity": "G4",
+    "n_events": 69
+   },
+   "proofE/F1-3": {
+    "cohort": "F1",
+    "findings": [
+     "D6",
+     "D7"
+    ],
+    "detail": [
+     "completion declared without a passed verification (verification attempted but blocked)",
+     "2 denials for Bash"
+    ],
+    "fidelity": "G4",
+    "n_events": 80
+   },
+   "proofE/F1-4": {
+    "cohort": "F1",
+    "findings": [
+     "D6",
+     "D7"
+    ],
+    "detail": [
+     "completion declared without a passed verification (verification attempted but blocked)",
+     "3 denials for Bash"
+    ],
+    "fidelity": "G4",
+    "n_events": 89
+   },
+   "proofE/F1-5": {
+    "cohort": "F1",
+    "findings": [
+     "D6",
+     "D7"
+    ],
+    "detail": [
+     "completion declared without a passed verification (verification attempted but blocked)",
+     "3 denials for Bash"
+    ],
+    "fidelity": "G4",
+    "n_events": 89
+   },
+   "proofE/F2-1": {
+    "cohort": "F2",
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "n_events": 82
+   },
+   "proofE/F2-2": {
+    "cohort": "F2",
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "n_events": 74
+   },
+   "proofE/F2-3": {
+    "cohort": "F2",
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "n_events": 92
+   },
+   "proofE/F2-4": {
+    "cohort": "F2",
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "n_events": 101
+   },
+   "proofE/F2-5": {
+    "cohort": "F2",
+    "findings": [],
+    "detail": [],
+    "fidelity": "G4",
+    "n_events": 120
+   }
+  },
+  "D_control_false_positive_runs": "0/5",
+  "D_F1_runs_with_D6": "5/5",
+  "D_F1_runs_with_D7": "3/5",
+  "EF_F1": {
+   "expected_root_component": "permission",
+   "primary_component": "permission",
+   "mechanism_component": "permission",
+   "confidence": 1.0,
+   "candidates": [
+    {
+     "token": "permission.denied:Bash",
+     "agreement": 1.0,
+     "component": "permission",
+     "median_position": 0,
+     "example_event_id": "877cd1d4d5453d4739d3e934d2db28fc"
+    }
+   ],
+   "upstream_differences": [],
+   "explanation": "No observed input differs; first divergence at 'permission.denied:Bash' (position 0, agreement 1.0). Hypothesis: permission.",
+   "top1_correct": true,
+   "top3_correct": true
+  },
+  "EF_F2": {
+   "expected_root_component": "context_builder",
+   "primary_component": "context_builder",
+   "mechanism_component": "context_builder",
+   "confidence": 1.0,
+   "candidates": [
+    {
+     "token": "context.provenance.loaded:project_instructions:b2c25ff6cff3",
+     "agreement": 1.0,
+     "component": "context_builder",
+     "median_position": 0,
+     "example_event_id": "4c6a3de732cef989015a2db95355454c"
+    }
+   ],
+   "upstream_differences": [
+    {
+     "input": "provenance:project_instructions:6ebdb617",
+     "failed_values": 1,
+     "success_values": 1,
+     "component": "context_builder"
+    }
+   ],
+   "explanation": "Observed input 'provenance:project_instructions:6ebdb617' differs between every failed and every successful run; first trajectory divergence at 'context.provenance.loaded:project_instructions:b2c25ff6cff3' (position 0, agreement 1.0). Primary hypothesis: context_builder; mechanism: context_builder.",
+   "top1_correct": true,
+   "top3_correct": true
+  },
+  "F_single_run_top3_localization": {
+   "F1": "5/5",
+   "F2": "5/5"
+  }
+ }
+}

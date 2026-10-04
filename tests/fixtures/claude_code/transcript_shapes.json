@@ -1,0 +1,195 @@
+{
+ "queue-operation": {
+  "type": "str",
+  "operation": "str",
+  "timestamp": "str",
+  "sessionId": "str",
+  "content": "str",
+  "reason": "str",
+  "commandUuid": "str",
+  "deliveryId": "str"
+ },
+ "user": {
+  "parentUuid": "str",
+  "isSidechain": "bool",
+  "promptId": "str",
+  "type": "str",
+  "message": {
+   "role": "str",
+   "content": [
+    "dict"
+   ]
+  },
+  "uuid": "str",
+  "timestamp": "str",
+  "permissionMode": "str",
+  "promptSource": "str",
+  "turnOrigin": "str",
+  "turnPosition": {
+   "promptIndex": "int",
+   "turnIndex": "int"
+  },
+  "userType": "str",
+  "entrypoint": "str",
+  "cwd": "str",
+  "sessionId": "str",
+  "version": "str",
+  "gitBranch": "str",
+  "toolUseResult": "str",
+  "sourceToolAssistantUUID": "str",
+  "toolDenialKind": "str",
+  "agentId": "str"
+ },
+ "attachment": {
+  "parentUuid": "str",
+  "isSidechain": "bool",
+  "attachment": {
+   "type": "str",
+   "text": "str"
+  },
+  "type": "str",
+  "uuid": "str",
+  "timestamp": "str",
+  "rendered": [
+   {
+    "content": "str"
+   }
+  ],
+  "renderedRole": "str",
+  "userType": "str",
+  "entrypoint": "str",
+  "cwd": "str",
+  "sessionId": "str",
+  "version": "str",
+  "gitBranch": "str",
+  "renderedBesideToolResult": "bool",
+  "renderedInHumanTurn": [
+   {
+    "content": "str"
+   }
+  ],
+  "agentId": "str"
+ },
+ "atis-latch": {
+  "type": "str",
+  "atis": "str",
+  "sessionId": "str"
+ },
+ "last-prompt": {
+  "type": "str",
+  "lastPrompt": "str",
+  "leafUuid": "str",
+  "sessionId": "str"
+ },
+ "assistant": {
+  "parentUuid": "str",
+  "isSidechain": "bool",
+  "message": {
+   "model": "str",
+   "id": "str",
+   "type": "str",
+   "role": "str",
+   "content": [
+    "dict"
+   ],
+   "container": "NoneType",
+   "stop_reason": "str",
+   "stop_sequence": "NoneType",
+   "stop_details": "NoneType",
+   "usage": {
+    "input_tokens": "int",
+    "cache_creation_input_tokens": "int",
+    "cache_read_input_tokens": "int",
+    "output_tokens": "int",
+    "output_tokens_details": "dict",
+    "server_tool_use": "dict",
+    "service_tier": "str",
+    "cache_creation": "dict",
+    "inference_geo": "str",
+    "iterations": "list",
+    "speed": "str",
+    "fallback_credit": "NoneType"
+   },
+   "input_transformations": "list",
+   "diagnostics": "NoneType",
+   "context_management": "NoneType"
+  },
+  "thinkingDurationMs": "int",
+  "apiBlockIndex": "int",
+  "requestId": "str",
+  "type": "str",
+  "uuid": "str",
+  "timestamp": "str",
+  "perTurnEffort": "NoneType",
+  "userType": "str",
+  "entrypoint": "str",
+  "cwd": "str",
+  "sessionId": "str",
+  "version": "str",
+  "gitBranch": "str",
+  "wireToolInputs": {
+   "toolu_015pWNdnYVEKw8iZz8QkG5u1": {
+    "file_path": "str"
+   }
+  },
+  "wireIngestContext": {
+   "toolu_019DisgKwRZXw4pryAFXyJBY": {
+    "cwd": "str"
+   }
+  },
+  "agentId": "str",
+  "attributionAgent": "str"
+ },
+ "system": {
+  "parentUuid": "str",
+  "isSidechain": "bool",
+  "type": "str",
+  "subtype": "str",
+  "hookCount": "int",
+  "hookInfos": [
+   {
+    "command": "str",
+    "durationMs": "int"
+   }
+  ],
+  "hookErrors": "list",
+  "hookAdditionalContext": "list",
+  "preventedContinuation": "bool",
+  "stopReason": "str",
+  "hasOutput": "bool",
+  "level": "str",
+  "timestamp": "str",
+  "uuid": "str",
+  "toolUseID": "str",
+  "userType": "str",
+  "entrypoint": "str",
+  "cwd": "str",
+  "sessionId": "str",
+  "version": "str",
+  "gitBranch": "str"
+ },
+ "cost-state": {
+  "type": "str",
+  "sessionId": "str",
+  "totalCostUSD": "float",
+  "totalAPIDuration": "int",
+  "totalAPIDurationWithoutRetries": "int",
+  "totalToolDuration": "int",
+  "totalLinesAdded": "int",
+  "totalLinesRemoved": "int",
+  "totalDuration": "int",
+  "startTime": "int",
+  "modelUsage": {
+   "claude-haiku-4-5-20251001": {
+    "inputTokens": "int",
+    "outputTokens": "int",
+    "thinkingTokens": "int",
+    "cacheReadInputTokens": "int",
+    "cacheCreationInputTokens": "int",
+    "webSearchRequests": "int",
+    "costUSD": "float"
+   }
+  },
+  "hasUnknownModelCost": "bool"
+ }
+}
