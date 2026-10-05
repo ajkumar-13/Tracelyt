@@ -1,6 +1,6 @@
 # SPEC-05 — Security, Privacy and Deployment, v0.1
 
-**Version:** 0.1.0 · **Status:** PROPOSED · **Owner:** Security & Privacy · **Depends on:** PLAN-11 P15 to P17, PLAN-12 §16, §20 · **Enforced in:** adapters (PII stripping), SPEC-01 content profile, SPEC-02 runner · **Review:** external security counsel before Phase 1 GA
+**Version:** 0.1.0 · **Status:** APPROVED v0.1 (founder approval 2026-10-05; Phase 1 baseline) · **Owner:** Security & Privacy · **Depends on:** PLAN-11 P15 to P17, PLAN-12 §16, §20 · **Enforced in:** adapters (PII stripping), SPEC-01 content profile, SPEC-02 runner · **Review:** external security counsel before Phase 1 GA
 
 ## 1. First principles
 1. **Telemetry is untrusted input.** Model outputs, tool outputs, hook outputs and transcript text may contain adversarial instructions. No component executes, follows or interprets captured content; every UI renders it as data; every automated analysis treats it as text, never as instruction.

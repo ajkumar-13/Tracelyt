@@ -1,6 +1,6 @@
 # SPEC-07 — Benchmark and Evaluation (Harness Reliability Benchmark), v0.1
 
-**Version:** 0.1.0 · **Status:** PROPOSED · **Owner:** Benchmark & Corpus (independent of the teams it grades, D-042) · **Depends on:** SPEC-01, SPEC-03, research 05 · **Reference implementation:** `scripts/run_proofs.py`, `tests/test_proof_gates.py`, fixtures in `tests/fixtures/claude_code/`
+**Version:** 0.1.0 · **Status:** APPROVED v0.1 (founder approval 2026-10-05; Phase 1 baseline) · **Owner:** Benchmark & Corpus (independent of the teams it grades, D-042) · **Depends on:** SPEC-01, SPEC-03, research 05 · **Reference implementation:** `scripts/run_proofs.py`, `tests/test_proof_gates.py`, fixtures in `tests/fixtures/claude_code/`
 
 ## 1. Purpose
 Test our own claims with ground truth. Detection, localization, first divergence, root-component attribution, reproduction, fix validation and regression detection are each measured against injected or human-labelled truth. Never evaluate a diagnosis only by asking a model whether it sounds right (HRCP-02 §57).

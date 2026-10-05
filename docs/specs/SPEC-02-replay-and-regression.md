@@ -1,6 +1,6 @@
 # SPEC-02 — Replay, Simulation and Regression, v0.1
 
-**Version:** 0.1.0 · **Status:** PROPOSED · **Owner:** Replay & Sandbox with Regression & CI · **Depends on:** SPEC-01, SPEC-05, research 06 · **Validated so far:** R2 cassette capture exists for Claude Code (Proof A side channel); replay execution not yet run (Proof G open)
+**Version:** 0.1.0 · **Status:** APPROVED v0.1 (founder approval 2026-10-05; Phase 1 baseline) · **Owner:** Replay & Sandbox with Regression & CI · **Depends on:** SPEC-01, SPEC-05, research 06 · **Validated so far:** R2 cassette capture exists for Claude Code (Proof A side channel); replay execution not yet run (Proof G open)
 
 ## 1. Purpose and position
 Replay is the proof mechanism behind the regression gate (PLAN-11 P11, D-031), never a standalone feature. Deterministic replay of recorded fixtures until divergence, then controlled live branching, with fidelity disclosed per run (P10). Everything executes customer-side by default (P15; SPEC-05 §6).

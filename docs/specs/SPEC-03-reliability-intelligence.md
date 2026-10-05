@@ -1,6 +1,6 @@
 # SPEC-03 — Reliability Intelligence, v0.1
 
-**Version:** 0.1.0 · **Status:** PROPOSED · **Owner:** Reliability Intelligence · **Depends on:** SPEC-01, SPEC-07, research 05 · **Reference implementation:** `src/harness_engine/detectors/deterministic.py`, `src/harness_engine/divergence/first_divergence.py` · **Validated against:** Proofs D, E, F (`docs/phase0/proofs/results.md`)
+**Version:** 0.1.0 · **Status:** APPROVED v0.1 (founder approval 2026-10-05; Phase 1 baseline) · **Owner:** Reliability Intelligence · **Depends on:** SPEC-01, SPEC-07, research 05 · **Reference implementation:** `src/harness_engine/detectors/deterministic.py`, `src/harness_engine/divergence/first_divergence.py` · **Validated against:** Proofs D, E, F (`docs/phase0/proofs/results.md`)
 
 ## 1. Scope
 Failure taxonomy (adopted, not invented), the detector contract, deterministic detectors D1 to D10, incident clustering inputs, cohort comparison and first divergence, root-component attribution output, confidence bands, and the admission rule for specialized models. Everything inferred carries confidence and evidence; nothing inferred is presented as observed (PLAN-11 P3 to P5).

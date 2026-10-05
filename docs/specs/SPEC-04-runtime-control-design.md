@@ -1,6 +1,6 @@
 # SPEC-04 — Runtime Control (design only), v0.1
 
-**Version:** 0.1.0 · **Status:** PROPOSED, design-only in Phase 0; implementation spec at Phase 2 · **Owner:** Runtime Control · **Depends on:** SPEC-03, SPEC-05, PLAN-11 P20, D-017/D-018/D-030
+**Version:** 0.1.0 · **Status:** APPROVED v0.1 design (founder approval 2026-10-05); implementation spec at Phase 2 · **Owner:** Runtime Control · **Depends on:** SPEC-03, SPEC-05, PLAN-11 P20, D-017/D-018/D-030
 
 ## 1. Position
 Runtime control is a capability of the engine, not the category (D-030). It arrives after detector precision, attribution accuracy and rollback reliability are measured per fleet (PLAN-04 Phase 3 to 4). Nothing autonomous ships before measurement.
