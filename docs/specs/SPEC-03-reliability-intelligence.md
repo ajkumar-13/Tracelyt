@@ -35,6 +35,21 @@ Dedupe rule (Proof finding 3): the same denial arrives from two channels; detect
 
 D6 is deliberately a **policy** detector: it says the run ended unverified, not that the agent lied. A **claim detector** (completion asserted in the final message without evidence) is a separate v0.2 item that needs a claim classifier and is evaluated against Failure-as-a-Process's "fabricates success in 26% of failed runs" finding.
 
+### 4.1 v0.2 detector backlog from the public record (added 2026-10-05)
+Each item has a public reproduction in `docs/phase0/discovery/07-github-issue-corpus.md` or a case file, which anchors its benchmark fixture (SPEC-07).
+
+| ID | Name | Definition sketch | Public anchor |
+|---|---|---|---|
+| D11 | Hook did not fire | a configured hook stage has no `hook.*` event for a matching tool call or lifecycle point | Elastic CI reviewer hook lost its execute bit (`cases/fleet-08-elastic.md`); claude-code #64699, #16047, #39468 |
+| D12 | Policy bypass via delegation | a subagent executes a tool call that the parent's deny or ask rules would have blocked | claude-code #43142, #52557, #75861, #21460 |
+| D13 | Instruction truncation | `context.provenance` content length exceeds the harness limit, or the loaded hash differs from the file hash | codex #13386 (AGENTS.md cut at 32 KB) |
+| D14 | Claimed success without evidence | final message asserts completion or "no changes" while `fs_delta` or `verify.*` contradicts it (claim classifier, see §4) | claude-code #68990, codex #3934, claude-code #36640 |
+| D15 | Post-compaction rework | after `context.compact`, the agent re-edits or reverts artifacts it produced before the compaction | claude-code #21925, codex #18720, cline #5790 |
+| D16 | Cost under-report | harness-reported cost diverges from token-derived cost by more than a threshold | goose #12498 |
+| D17 | Side effect then timeout | a side-effecting tool call (SPEC-01 side-effect class) times out and is re-executed on resume | langgraph #9185 |
+| D18 | Runaway fan-out | subagent spawn count or aggregate subagent cost exceeds a budget with no parent progress | claude-code #69332, #69206 |
+| D19 | Silent policy downgrade | effective permission or sandbox level differs from the requested one with no event explaining it | codex #36570, claude-code #83362 |
+
 ## 5. Streaming and fleet detectors (Phase 2)
 Failure-rate shift, cost shift, latency shift, tool-distribution shift, by harness version and model; change-point detection against release correlation (PLAN-12 §13).
 
