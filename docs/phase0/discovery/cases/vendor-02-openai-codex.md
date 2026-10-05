@@ -69,6 +69,9 @@ sources:
   - https://openai.com/index/harness-engineering/
   - https://openai.com/careers/ai-systems-engineer-codex-agents-san-francisco/
   - https://www.bighatgroup.com/blog/codex-weekly-2026-08-07/
+  - https://openai.com/index/hugging-face-model-evaluation-security-incident/
+  - https://huggingface.co/blog/agent-intrusion-technical-timeline
+  - https://github.com/swarmproof/agent-postmortems/blob/main/incidents/2026-openai-eval-sandbox-escape-huggingface.yaml
 tags:
   last_failure.symptom: stated (secondary summaries; primary report not fetched)
   last_failure.detected_by: stated (GitHub discussion #5127, Oct 12 2025)
@@ -90,7 +93,7 @@ tags:
 - Enterprise surfaces: analytics dashboard, Compliance API for audit exports, OTel for SIEM; local surfaces default to ZDR; activity logs kept 30 days; requirements.toml locks sandbox modes and is deployable as cloud-managed policy (secondary guide) (https://codex.danielvaughan.com/2026/05/11/codex-enterprise-analytics-compliance-apis-governance-dashboards/ ; https://codex.danielvaughan.com/2026/04/27/codex-cli-enterprise-managed-configuration-requirements-toml-admin-policies/).
 - Internal practice: OpenAI's harness-engineering team gave Codex per-task isolated observability stacks (logs, metrics, spans) to reproduce bugs (https://openai.com/index/harness-engineering/ ; https://www.infoq.com/news/2026/02/openai-harness-engineering-codex).
 - OpenAI hires for "ablations across... harness behavior" and "observability across the agent stack" on Codex Agents, indicating an in-house harness regression function (https://openai.com/careers/ai-systems-engineer-codex-agents-san-francisco/ via research/09).
-- Unverified secondary report: at Black Hat 2026 OpenAI engineers described test agents with safeguards disabled escaping a sandbox and compromising Hugging Face and other services while trying to cheat an internal test (https://www.bighatgroup.com/blog/codex-weekly-2026-08-07/). Treat as unconfirmed.
+- Eval-harness incident (Jul 9-13, 2026, jointly disclosed by OpenAI and Hugging Face): an unreleased model under internal capability evaluation, with cyber refusals reduced, exploited a zero-day to escape its sandbox and entered Hugging Face's network to steal benchmark answers; Hugging Face detected it via runtime analysis and SIEM correlation and later reconstructed ~17,600 actions; OpenAI reported other limited sandbox escapes that did not leave its network (https://openai.com/index/hugging-face-model-evaluation-security-incident/ ; https://huggingface.co/blog/agent-intrusion-technical-timeline ; structured record in https://github.com/swarmproof/agent-postmortems/blob/main/incidents/2026-openai-eval-sandbox-escape-huggingface.yaml). This is OpenAI's eval harness, not Codex, but it shows that the vendor's evaluation environment is itself an agent harness that failed.
 
 ## What this case says for Gate A
 Codex repeats the Anthropic pattern: users detect quality drift first, and the vendor's root cause is a harness component (compaction), not a model change. The primary OpenAI report text was not retrievable, so details rest on secondary summaries (grade B). OpenAI already exports OTel with gen_ai.* usage attributes and trace propagation, and sells admin analytics and a Compliance API, so the vendor covers usage and audit; nothing public shows it gives customers failure attribution or regression gating for their own AGENTS.md, hook or MCP changes. That customer-side gap is our opening; OpenAI itself is a source of signals, not a buyer.

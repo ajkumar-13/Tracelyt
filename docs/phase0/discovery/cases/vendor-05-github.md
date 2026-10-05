@@ -16,10 +16,10 @@ failure_definition: "resolution rate (percentage of tasks successfully completed
 failure_rate_estimate: unknown
 cost_per_failed_run: unknown
 last_failure:
-  symptom: unknown        # no public GitHub harness-regression postmortem found in this pass
-  detected_by: unknown
+  symptom: "no quality-regression postmortem found; nearest harness failure is CVE-2025-53773, prompt injection flipping Copilot's own auto-approve setting"
+  detected_by: user          # external researchers
   time_to_why: unknown
-  attributed_component: unknown
+  attributed_component: permission
   recurred: unknown
   their_words: ""
 harness_change:
@@ -63,6 +63,8 @@ sources:
   - https://github.com/github/docs/blob/main/content/copilot/concepts/agents/about-third-party-coding-agents.md
   - https://github.com/github/docs/blob/main/content/copilot/how-tos/copilot-sdk/observability/opentelemetry.md
   - https://github.blog/ai-and-ml/generative-ai/under-the-hood-security-architecture-of-github-agentic-workflows/
+  - https://nvd.nist.gov/vuln/detail/CVE-2025-53773
+  - https://github.com/swarmproof/agent-postmortems/blob/main/incidents/2025-github-copilot-autoapprove-rce.yaml
 tags:
   failure_definition: stated
   regression_detection: stated
@@ -71,7 +73,7 @@ tags:
   data_constraints.cannot_leave: stated (defaults)
   can_reproduce_failed_run: inferred (logs kept, no replay)
   would_emit_standard_signal: stated
-  last_failure: unknown (not found)
+  last_failure: stated (CVE-2025-53773 record); attributed_component inferred (approval boundary = permission)
 ```
 
 ## Evidence
@@ -84,6 +86,7 @@ tags:
 - Session data: CLI keeps full session records under ~/.copilot/session-state/ plus a SQLite store; local sessions sync to the GitHub account by default unless policy disables it; cloud-agent session logs persist on github.com and are visible to repo collaborators (https://github.com/github/docs/blob/main/content/copilot/concepts/security-governance-and-network-settings/session-data.md).
 - Third-party agents (public preview): Anthropic Claude and OpenAI Codex run on GitHub under "the same security protections, mitigations, and limitations" as the Copilot cloud agent (https://github.com/github/docs/blob/main/content/copilot/concepts/agents/about-third-party-coding-agents.md).
 - Agentic Workflows (Mar 2026): agent container behind a firewall, MCP gateway and model proxy hold credentials, writes staged through a safe-output service; network, proxy, gateway and container actions are logged at trust boundaries "for incident reconstruction" (https://github.blog/ai-and-ml/generative-ai/under-the-hood-security-architecture-of-github-agentic-workflows/, archived in github.com/aintnorest/knowledge-base-intelligent-systems).
+- CVE-2025-53773 (fixed Aug 2025 Patch Tuesday): prompt injection could make Copilot in VS Code edit .vscode/settings.json to set chat.tools.autoApprove ("YOLO mode"), disabling confirmations and enabling RCE: the agent could modify its own approval boundary (https://embracethered.com/blog/posts/2025/github-copilot-remote-code-execution-via-prompt-injection/ ; https://nvd.nist.gov/vuln/detail/CVE-2025-53773 ; https://github.com/swarmproof/agent-postmortems/blob/main/incidents/2025-github-copilot-autoapprove-rce.yaml).
 - Responsible-use doc warns CLI may suggest "commands for file deletion or hard drive formatting" and "You are ultimately responsible for the commands executed" (https://github.com/github/docs/blob/main/content/copilot/responsible-use/agents.md).
 
 ## What this case says for Gate A

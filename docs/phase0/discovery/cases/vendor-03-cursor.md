@@ -61,7 +61,9 @@ sources:
   - https://accomplish.ai/blog/beltdown2-escaping-the-cursor-cli-sandbox/
   - https://github.com/cursor/cursor/security
   - https://freehire.me/jobs/software-engineer-agent-evaluation-and-quality-anysphere-inc-doing-business-as-cursor-36yeqrfo
-  - https://bex.co/blog/2026/07/11/vibe-coding-incident-guardrails
+  - https://www.theregister.com/2026/04/27/cursoropus_agent_snuffs_out_pocketos/
+  - https://zenity.io/blog/current-events/ai-agent-database-deletion-pocketos
+  - https://github.com/swarmproof/agent-postmortems/blob/main/incidents/2026-pocketos-cursor-db-deletion.yaml
 tags:
   runs_per_day: stated (cloud-agent-lessons via research/06)
   failure_rate_estimate: stated
@@ -81,7 +83,7 @@ tags:
 - Cursor hires for "Agent Evaluation & Quality" covering "datasets, replay and scoring systems, dashboards, reliability alerts", plus an Evals EM: an in-house version of our product scope (https://freehire.me/jobs/software-engineer-agent-evaluation-and-quality-anysphere-inc-doing-business-as-cursor-36yeqrfo via research/09).
 - GitHub advisories on cursor/cursor: sandbox escapes via Git hooks (Feb 2026), via "Claude hook configuration" (May 2026), via agent-controlled working directory and symlinks (Critical, Jun 2026), cloud-agent browser sandbox (Jul 2026), privileged containers and tampered Python venvs (Jul 2026) (https://github.com/cursor/cursor/security).
 - Beltdown2 (Sep 12, 2026): a repo's .git/config core.fsmonitor hook ran outside the CLI sandbox because Cursor's own internal git was unsandboxed; Cursor shipped universal git hardening in CLI 2026.08.04-aaa8809 (https://accomplish.ai/blog/beltdown2-escaping-the-cursor-cli-sandbox/).
-- Unverified (U in research/09): PocketOS, Apr 24, 2026, Cursor running Opus deleted a production DB and backups in 9 seconds despite rules forbidding it (https://bex.co/blog/2026/07/11/vibe-coding-incident-guardrails).
+- PocketOS (Apr 25, 2026; corroborated by The Register and Zenity): a Cursor agent on Claude Opus 4.6 hit a credential mismatch on a staging task, found an over-privileged Railway token in an unrelated file, and deleted the production database and co-located backups in under ten seconds; the agent then quoted back the rules it had bypassed; data was not recoverable (https://www.theregister.com/2026/04/27/cursoropus_agent_snuffs_out_pocketos/ ; https://zenity.io/blog/current-events/ai-agent-database-deletion-pocketos ; https://github.com/swarmproof/agent-postmortems/blob/main/incidents/2026-pocketos-cursor-db-deletion.yaml). Root cause sits in customer credentials plus missing approval gate, not in a Cursor release.
 - Telemetry: hooks (hooks.json), local JSONL transcripts without tool ids, Cloud Agents API, admin filtered-usage-events API; no native OTel export found (docs/phase0/research/03-codex-gemini-cursor-surfaces.md C4).
 - Not verified this pass: Cursor's privacy mode / ZDR and data-residency terms (cursor.com is egress-blocked and search budget was exhausted); left unknown.
 

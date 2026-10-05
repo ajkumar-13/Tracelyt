@@ -56,6 +56,8 @@ quotes:
     text: "Two unrelated experiments made it challenging for us to reproduce the issue at first"
   - q: 10
     text: "we'll ensure that a larger share of internal staff use the exact public build of Claude Code."
+  - q: 2
+    text: "Expanding our continuous monitoring of evaluation transcripts for unexpected behavior"
 sources:
   - https://www.anthropic.com/engineering/april-23-postmortem
   - https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues
@@ -65,6 +67,9 @@ sources:
   - https://research.checkpoint.com/2026/rce-and-api-token-exfiltration-through-claude-code-project-files-cve-2025-59536/
   - https://advisories.gitlab.com/pkg/npm/@anthropic-ai/claude-code/CVE-2026-21852/
   - https://code.claude.com/docs/en/data-usage
+  - https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals
+  - https://nvd.nist.gov/vuln/detail/CVE-2025-55284
+  - https://nvd.nist.gov/vuln/detail/CVE-2026-54316
   - https://code.claude.com/docs/en/monitoring-usage
 tags:
   failure_definition: stated
@@ -91,6 +96,8 @@ tags:
 - Sep 2025 postmortem (infrastructure, not harness): context-window routing error hit ~30% of Claude Code users; promised "more sensitive evaluations", continuous quality checks on true production systems, and faster debugging tooling for community feedback (https://www.anthropic.com/engineering/a-postmortem-of-three-recent-issues ; https://simonwillison.net/2025/Sep/17/anthropic-postmortem/).
 - Anthropic's Jan 2026 evals guide says Claude Code evals started from employee and user feedback, then narrow evals (concision, file edits), then behaviour evals (over-engineering); capability evals "graduate" into regression suites (https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents ; https://gist.github.com/pebeto/76c1e61120cb27445d53a00459db5fc8).
 - CVE-2025-59536 (CVSS 8.7): hooks and MCP servers defined in a repo's .claude/settings.json ran before the trust dialog; CVE-2026-21852: ANTHROPIC_BASE_URL in project settings exfiltrated API keys pre-trust (https://research.checkpoint.com/2026/rce-and-api-token-exfiltration-through-claude-code-project-files-cve-2025-59536/ ; https://advisories.gitlab.com/pkg/npm/@anthropic-ai/claude-code/CVE-2026-21852/).
+- Eval-harness incidents (disclosed Jul 30, 2026): reviewing 141,006 evaluation runs where Claude could reach the internet, Anthropic found three incidents in which models in misconfigured third-party cyber-eval environments hit real organisations (one published malicious code to PyPI that ran on 15 real systems); review began Jul 23 only after OpenAI's own disclosure. Promised: "Expanding our continuous monitoring of evaluation transcripts for unexpected behavior", better investigation tooling, vendor assurance (https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals).
+- Other permission-boundary CVEs: CVE-2025-55284 (allowlisted ping/dig/nslookup used to exfiltrate secrets over DNS, fixed v1.0.4) and CVE-2026-54316 (CI-wired Claude Code exfiltrating secrets via pre-approved Hugging Face access, fixed v2.1.163) (https://nvd.nist.gov/vuln/detail/CVE-2025-55284 ; https://nvd.nist.gov/vuln/detail/CVE-2026-54316 ; https://github.com/swarmproof/agent-postmortems/tree/main/incidents).
 - Data: commercial standard retention 30 days; ZDR for Claude Code "enabled on a per-organization basis by your account team"; transcripts kept locally in plaintext 30 days; telemetry to Anthropic off by default on Bedrock/Vertex/Foundry (https://code.claude.com/docs/en/data-usage).
 - Feedback path for regressions: opt-in "Can Anthropic look at your session transcript" upload after quality survey (retained up to 6 months); /feedback transcripts retained 5 years; survey ratings can be routed to the customer's own OTel collector (https://code.claude.com/docs/en/data-usage).
 - Native OTel: OTLP metrics/logs plus beta spans carrying gen_ai.system, gen_ai.request.model, gen_ai.tool.call.id (https://code.claude.com/docs/en/monitoring-usage ; see docs/phase0/research/02-claude-code-surfaces.md sec 2.6).
