@@ -1,80 +1,97 @@
-# Coinbase: about 2,400 developers on Cursor plus Copilot and Claude Code behind an internal model router, review scaled by risk tier
+# Coinbase: ~2,400 developers on Cursor plus Copilot and Claude Code behind an internal model router; 95–100% of code written with LLMs, engineers supervising 3–10 agents each, and an internal rule that agents be "observable end-to-end" and "auditable down to inputs and decision traces"
 
-evidence_grade: C (vendor case study plus press interviews and a Coinbase blog post visible only through search snippets; no incident or postmortem detail)
+evidence_grade: B (pass 2: three Coinbase-authored engineering blog posts plus on-record interviews with the Head of Platform, now CTO; specific on tooling and governance posture, silent on coding-agent incidents and telemetry)
 
 ```yaml
 org: Coinbase
-role: unknown (public voices are Rob Witoff, Head of Platform, and Brian Armstrong, CEO)
+role: unknown (public voices: Rob Witoff, Head of Platform then CTO from mid-2026; Brian Armstrong, CEO; Varsha Mahadevan, Senior Engineering Manager)
 track: fleet
 date: 2026-10-05
-interviewer: desk
+interviewer: desk (no interview)
 method: desk
-harnesses_frameworks: [Cursor, GitHub Copilot, Claude Code, internal OpenAI-compatible model router, internal MCP servers (GitHub, Linear)]
+harnesses_frameworks: [Cursor (IDE agents and cloud agents), GitHub Copilot, Claude Code, Cody, JetBrains, internal OpenAI-compatible model router, internal MCP servers (GitHub, Linear), CB-GPT internal AI application platform, LangGraph/LangChain for enterprise process agents, qa-ai-agent]
 domain: coding
-runs_per_day: unknown (inferred to be large: >2,400 developers on Cursor; "most engineers" run 5 to 10 agents at a time)
+runs_per_day: "unknown; >2,400 developers on Cursor; >1,500 engineers use the router daily; 'most engineers run 5 to 10 agents at once' (2026); agents produce 75% of PRs"
 failure_definition: unknown
 failure_rate_estimate: unknown
 cost_per_failed_run: unknown
 last_failure:
-  symptom: unknown (no Coinbase-internal incident is public; the HiddenLayer "CopyPasta" disclosure is a demonstrated risk class against Cursor, not a Coinbase incident)
+  symptom: unknown (no Coinbase coding-agent incident is public; HiddenLayer's CopyPasta disclosure is a demonstrated attack on Cursor, not a Coinbase incident)
   detected_by: unknown
   time_to_why: unknown
   attributed_component: unknown
   recurred: unknown
   their_words: ""
 harness_change:
-  last_change: unknown
-  regression_detection: unknown
+  last_change: "Model router and MCP servers run by DevX; 'training engineers on how to leverage different models for varied use cases'; agent-first engineering model with requirements documents written for agents"
+  regression_detection: manual   # inferred: human review tiered by risk; requirement docs used as evaluation frameworks after implementation; nothing automated is described for coding agents
   silent_regression_experienced: unknown
   would_pay_to_prevent: unclear
-controls_owned: [mcp_servers, model_effort, ci_checks]   # inferred: the DevX team builds MCP servers and runs a model router; review is tiered by risk
-tooling_today: [Cursor, Copilot, Claude Code, OpenAI-compatible router (>1,500 daily users), internal MCP integrations]
-coding_agent_traces_flow_to: unknown (the router could be a natural capture point; inferred only)
+controls_owned (fleets): [mcp_servers, model_effort, ci_checks, permissions]   # stated: DevX owns MCP servers and the router; review depth varies by risk tier; the enterprise-agent standard requires versioning, observability and auditability
+tooling_today: [Cursor, Copilot, Claude Code, OpenAI-compatible router, internal MCP servers, CB-GPT (35-50 apps), LangGraph code-first agents with evaluation and human-in-the-loop as first-class concerns, qa-ai-agent]
+coding_agent_traces_flow_to: unknown   # the router is a natural capture point (inferred); the enterprise-agent standard demands "observable end-to-end" but names no stack
 can_reproduce_failed_run: unknown
 has_compared_cohorts: unknown
-most_wanted_question: ""
+most_wanted_question: unknown
 data_constraints:
-  cannot_leave: [unknown]
+  cannot_leave: unknown   # regulated custody business; enterprise agents must be "hosted in our infrastructure"
   replay_inside_env_ok: unknown
   replay_outside_env_ok: unknown
-budget_owner: dev_productivity   # inferred: the tools and router are owned by DevX/Platform (Witoff is Head of Platform)
+budget_owner: dev_productivity   # inferred: DevX/Platform owns tools and router; Witoff (Platform, now CTO) is the executive sponsor
 credible_contract_size: unknown
-automation_limits: "Cryptography and other security-sensitive code stay mainly human-led, with line-by-line review; internal prototyping is effectively fully automated (stated by Witoff via press)."
+automation_limits: "Core cryptography: top cryptographers 'research and review every single line'; AI used heavily to test and check for vulnerabilities; internal prototyping '100 percent automated'; core system management 'somewhere in the middle' (Witoff)."
 would_allow_pause_stop_on_evidence: unknown
 reaction:
-  would_use_next_week: ""
-  does_not_believe: ""
+  would_use_next_week: unknown
+  does_not_believe: unknown
 design_partner_candidate: unknown
 referrals: []
 quotes:
+  - q: 21
+    text: "When we're writing core cryptography, our top cryptographers carefully research and review every single line. We use AI heavily to test and check code for vulnerabilities, but it's much more manual than internal prototyping, which is now 100 percent automated."
+  - q: 9
+    text: "hosted in our infrastructure, versioned through our pipelines, observable end-to-end, evaluated in a repeatable way, and auditable down to inputs and decision traces"
+    paraphrase: true
   - q: 10
-    text: "leaning as hard as we can into AI"
+    text: "The more tools and instructions you load into a prompt, the more 'context noise' you introduce, making outputs harder to reproduce and individual steps harder to unit test or gate in CI."
+    paraphrase: true
 sources:
-  - https://cursor.com/blog/coinbase
   - https://www.coinbase.com/blog/Tools-for-Developer-Productivity-at-Coinbase
+  - https://www.coinbase.com/blog/building-enterprise-AI-agents-at-Coinbase
+  - https://www.coinbase.com/blog/How-We-are-Improving-Product-Quality-at-Coinbase-with-AI-agents
+  - https://cursor.com/blog/coinbase
   - https://cointelegraph.com/news/over-95-of-coinbases-code-is-now-written-with-ai
-  - https://www.tradingview.com/news/cointelegraph:475ab94d4094b:0-over-95-of-coinbase-s-code-is-now-written-with-help-of-ai/
+  - https://www.neweconomies.co/p/coinbase
+  - https://www.bankless.com/read/brian-armstrong-says-40-of-coinbases-daily-code-is-ai-generated
   - https://techcrunch.com/2025/08/22/coinbase-ceo-explains-why-he-fired-engineers-who-didnt-try-ai-immediately
-  - https://www.entrepreneur.com/business-news/coinbase-ceo-fired-software-engineers-who-didnt-adopt-ai/496250
-  - https://www.coindesk.com/tech/2025/09/06/coinbase-s-go-to-ai-coding-tool-found-vulnerable-to-copypasta-exploit
+  - https://crypto.news/coinbase-names-new-cto-after-14-workforce-cut/
+  - https://claude.com/customers/coinbase
+  - https://cointelegraph.com/news/coinbase-preferred-ai-coding-tool-hijacked-new-virus
+  - https://www.zenml.io/llmops-database/building-enterprise-ai-agents-with-code-first-approach-for-trust-and-auditability
 tags:
-  harnesses_frameworks: stated
-  runs_per_day: inferred
-  controls_owned: inferred
-  automation_limits: stated (press interview)
+  harnesses_frameworks: stated (Coinbase blog for Cursor/Copilot/Claude Code/router/MCP; CIO.com snippet for Cody/JetBrains; Coinbase enterprise-agents blog for LangGraph; claude.com for CB-GPT)
+  runs_per_day: stated (2,400 via Cursor; 1,500 via Coinbase blog; 5-10 agents via Cointelegraph; 75% PRs via Cursor)
+  harness_change.last_change: stated
+  regression_detection: inferred
+  controls_owned: stated (router, MCP, tiered review, enterprise-agent standard); permissions inferred from the standard's auditability requirement
   budget_owner: inferred
-  quotes: stated (Armstrong via Entrepreneur snippet)
+  automation_limits: stated (Witoff via Cointelegraph)
+  quotes: q21 verbatim (Cointelegraph snippet); q9 and q10 near-verbatim renderings of the Coinbase enterprise-agents blog via snippets, marked paraphrase
 ```
 
 ## Evidence
-- More than 2,400 developers use Cursor as part of an "agent-first" engineering model. Some teams cut idea-to-production time from 20 days to under 2 (https://cursor.com/blog/coinbase).
-- Cursor's case study says 75% of all PRs are created by agents, and the average engineer merges 55% more PRs than at the start of the year (https://cursor.com/blog/coinbase).
-- Coinbase writes product and technical requirements explicitly for agents. These living documents guide execution and serve as evaluation frameworks after implementation (https://cursor.com/blog/coinbase).
-- Coinbase's own blog says it has enabled Cursor, Copilot and Claude Code. Engineers can try new tools on foundation models through an OpenAI-compatible router that more than 1,500 engineers use daily. DevX built MCP servers, for example GitHub and Linear (https://www.coinbase.com/blog/Tools-for-Developer-Productivity-at-Coinbase).
-- Head of Platform Rob Witoff told Cointelegraph that 95–100% of code is written by or with LLMs, up from 40% in February, and that most engineers run 5 to 10 agents at once (https://cointelegraph.com/news/over-95-of-coinbases-code-is-now-written-with-ai).
-- Witoff described a "wide spectrum" of AI use by risk. Cryptography and security-sensitive code is reviewed line by line by humans (https://www.tradingview.com/news/cointelegraph:475ab94d4094b:0-over-95-of-coinbase-s-code-is-now-written-with-help-of-ai/).
-- In 2025 the CEO mandated that all engineers onboard to Cursor and Copilot within a week, and fired engineers who had not done so without a good reason (https://techcrunch.com/2025/08/22/coinbase-ceo-explains-why-he-fired-engineers-who-didnt-try-ai-immediately).
-- HiddenLayer's "CopyPasta License Attack" showed Cursor could be steered by hidden instructions in files such as LICENSE.txt, spreading injected code across a codebase. The press framed it as a risk to Coinbase because Cursor was used by "every Coinbase engineer". No Coinbase incident was reported (https://www.coindesk.com/tech/2025/09/06/coinbase-s-go-to-ai-coding-tool-found-vulnerable-to-copypasta-exploit).
+
+- Coinbase's DevX blog: the company "enabled a variety of common coding tools" (Cursor, Copilot, Claude Code); engineers experiment with new tools "directly on foundation models through an OpenAI compatible router that is now used daily by more than 1,500 engineers"; DevX built MCP servers "like Github and Linear integrations" and trains engineers "on how to leverage different models for varied use cases"; every engineer had used Cursor by February 2025 (https://www.coinbase.com/blog/Tools-for-Developer-Productivity-at-Coinbase).
+- Cursor case study: >2,400 developers in an "agent-first engineering model"; 75% of PRs created by agents; engineers merge 55% more PRs; idea-to-production cut from 20 days to under 2 on some teams; requirements documents written for agents serve "as evaluation frameworks after implementation"; sprint planning and team sizes were redesigned (https://cursor.com/blog/coinbase).
+- Armstrong (2025): 40% of daily code AI-generated, on track for 50% by October; engineers were given one week to onboard to Cursor and Copilot and some who did not were fired (https://www.bankless.com/read/brian-armstrong-says-40-of-coinbases-daily-code-is-ai-generated; https://techcrunch.com/2025/08/22/coinbase-ceo-explains-why-he-fired-engineers-who-didnt-try-ai-immediately).
+- Witoff to Cointelegraph (2026): 95–100% of code written by or with LLMs, up from 40% in February; most engineers run 5–10 agents at once; agents do work equivalent to ~1,200 employees; review depth is a "wide spectrum" from line-by-line cryptography review to fully automated prototyping (https://cointelegraph.com/news/over-95-of-coinbases-code-is-now-written-with-ai).
+- Witoff was named CTO after a 14% workforce cut in May 2026; in a September 2026 interview he said 98–99% of code is written by agents, engineers moved "from writing code by hand to supervising 3–10 agents each in a single year", and every employee gets a weekly AI feedback agent (https://crypto.news/coinbase-names-new-cto-after-14-workforce-cut/; https://www.neweconomies.co/p/coinbase).
+- Coinbase's enterprise-agent standard (Agentic AI Tiger Team, six weeks): agents must be "hosted in our infrastructure, versioned through our pipelines, observable end-to-end, evaluated in a repeatable way, and auditable down to inputs and decision traces"; code-first LangGraph was chosen over low-code because prompt "context noise" makes outputs "harder to reproduce and individual steps harder to unit test or gate in CI"; observability, evaluation and human-in-the-loop are "first-class concerns" (https://www.coinbase.com/blog/building-enterprise-AI-agents-at-Coinbase; https://www.zenml.io/llmops-database/building-enterprise-ai-agents-with-code-first-approach-for-trust-and-auditability).
+- qa-ai-agent takes natural-language test requests ("log into coinbase test account in Brazil, and buy 10 BRL worth of BTC"); goal "10x our testing effort at 1/10 the cost"; after two months of results Coinbase began deprecating manual tests it supplants (https://www.coinbase.com/blog/How-We-are-Improving-Product-Quality-at-Coinbase-with-AI-agents).
+- CB-GPT, an internal platform, hosts 35–50 AI applications; Claude is consumed through Google Cloud with AWS Bedrock as a second cloud; support chatbot carries "financial compliance guardrails" (https://claude.com/customers/coinbase).
+- HiddenLayer's "CopyPasta License Attack" hides instructions in LICENSE.txt/README.md that Cursor copies into generated code, worst in Cursor's auto-run mode; press tied it to Coinbase because Cursor was its preferred tool. No Coinbase incident was reported (https://cointelegraph.com/news/coinbase-preferred-ai-coding-tool-hijacked-new-virus).
+- Not public: any coding-agent incident, cost incident, OTel export, rules-file ownership, or which data may leave.
 
 ## What this case says for Gate A
-Coinbase is a strong ICP shape: multiple closed harnesses, a central DevX/Platform team, its own MCP servers, and a model router that is a natural place to capture telemetry. Mandated adoption plus 75% agent-authored PRs means harness changes (rules, MCP servers, model routing) spread fleet-wide almost at once. Still, the public record holds no incident, regression or telemetry-destination evidence, so it counts as zero on every pain counter. The CopyPasta disclosure points to a rules-file and context-poisoning risk class that a flight recorder could detect, but it is a researcher demo, not Coinbase's own experience. Given its regulated custody business, data-residency constraints are likely but not public.
+
+Coinbase is the archetype fleet: mandated adoption, three closed harnesses plus an internal router and MCP servers owned by a central DevX team, and agents producing three quarters of PRs with engineers each supervising several. Its own engineering standard for enterprise agents already asks for exactly what Tracelyt sells (versioned, observable end-to-end, repeatably evaluated, auditable to inputs and decision traces), but it was written for internal LangGraph agents, and nothing says the same bar is applied to Cursor or Claude Code sessions. The gap between that standard and the coding-agent fleet is the pitch. Still no public failure, regression or telemetry fact, so every pain counter stays at zero; the router is the obvious instrumentation point but that is inference. The custody business makes in-environment hosting likely, consistent with "hosted in our infrastructure" for enterprise agents. Witoff's platform organization is the live-interview target.
