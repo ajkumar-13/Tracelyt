@@ -1,6 +1,6 @@
 # SPEC-08 — Open Source and Governance, v0.1
 
-**Version:** 0.1.0 · **Status:** PROPOSED · **Owner:** Capture & Standards with DevRel · **Depends on:** PLAN-06, PLAN-11 D-036, research 01 §A.6/A.7, research 08
+**Version:** 0.1.0 · **Status:** APPROVED v0.1 (founder approval 2026-10-05; Phase 1 baseline) · **Owner:** Capture & Standards with DevRel · **Depends on:** PLAN-06, PLAN-11 D-036, research 01 §A.6/A.7, research 08
 
 ## 1. Repositories (initial)
 | Repo | Contents | License |

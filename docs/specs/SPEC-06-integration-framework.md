@@ -1,6 +1,6 @@
 # SPEC-06 — Integration Framework (adapters and instrumentors), v0.1
 
-**Version:** 0.1.0 · **Status:** PROPOSED · **Owner:** Capture & Standards · **Depends on:** SPEC-01, SPEC-05, research 02, 03, 04 · **Reference implementation:** `src/harness_engine/adapters/claude_code/` (Tier B), `src/harness_engine/normalize/` (merge, verification adapter)
+**Version:** 0.1.0 · **Status:** APPROVED v0.1 (founder approval 2026-10-05; Phase 1 baseline) · **Owner:** Capture & Standards · **Depends on:** SPEC-01, SPEC-05, research 02, 03, 04 · **Reference implementation:** `src/harness_engine/adapters/claude_code/` (Tier B), `src/harness_engine/normalize/` (merge, verification adapter)
 
 ## 1. Tiers and contract summary
 | Tier | Definition | Contract |

@@ -61,6 +61,7 @@ Message by audience:
 | They say | We say |
 |---|---|
 | "We have Datadog / Dynatrace." | Keep it. We export incidents and the Harness Reliability Score into it. Datadog shows the span; we show which compaction policy caused the span and prove the fix. |
+| "Datadog Agent Console already watches our Claude Code fleet." (desk research 2026-10-05, `docs/phase0/discovery/cases/fleet-20-datadog.md`) | It prices waste per session, flags three patterns and pushes hooks org-wide; it does not reconstruct a run, cluster incidents, find the first divergence between failed and successful runs, replay, or gate a change to your rules files, hooks, permissions or MCP configuration. Keep the console; we feed it incidents and gate the changes it cannot. |
 | "We use LangSmith; Engine opens PRs." | Engine attributes to prompts and code within LangChain's world. We attribute to harness components across any framework or closed harness, reproduce the failure, and gate the change against history. |
 | "Raindrop already clusters our failures." | Clustering is table stakes now; seven vendors do it. Ask them to replay last week's failures against your new retry policy and show you the success and cost delta. |
 | "We test with Patronus / Coval / Braintrust before shipping." | Keep it. Those test on synthetic cases. We test on what actually broke in production and tell you which component to change. |

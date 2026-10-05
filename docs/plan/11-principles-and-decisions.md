@@ -103,7 +103,7 @@ Numbering continues from HRCP-00 D-001 to D-030 (archived). Changed items cite t
 | D-024 | API-first | DECIDED |
 | D-025 | Separate from document-state, memory, IAM, MCP gateway and BPO layers | DECIDED |
 | D-026 | **Changed from "coding agents first".** Two domains from Phase 1: coding agents and API-driven workflow agents; browser, research and computer-use agents in Phase 4. Reason: founder direction plus both domains satisfy the alignment and snapshot constraints. | DECIDED |
-| D-027 | Open-source developer product is the Flight Recorder (internal name); external name decided in Phase 0 | PROPOSED |
+| D-027 | Open-source developer product is the Flight Recorder (internal name); external name: Kernmantle recorder, CLI `qar` (D-043) | DECIDED |
 | D-028 | **Changed.** Event model is published as `gen_ai.*` proposals plus a `harness.*` registry; "Harness Event Model" is internal | DECIDED |
 | D-029 | Execution graph (internal name "Harness Execution Graph") stored as adjacency tables, no graph database unless the Phase 1 benchmark fails | DECIDED |
 | D-030 | **Changed from "Harness Reliability Control Plane".** Category: reliability engine for the system around the model / harness engineering platform | DECIDED |
@@ -119,15 +119,15 @@ Numbering continues from HRCP-00 D-001 to D-030 (archived). Changed items cite t
 | D-040 | Harness vendors are a strategic design-partner track | DECIDED |
 | D-041 | Specialized models ship only when they beat the rules baseline by a published margin | DECIDED |
 | D-042 | Benchmark team is independent of the teams it grades | DECIDED |
-| D-043 | Company and product name | OPEN (Phase 0) |
+| D-043 | **Decided 5 October 2026.** Company and product name: **Kernmantle**; specification `harness-semconv` (Agent Harness Semantic Conventions, namespace `harness.*`); recorder CLI `qar`. Conditional on registrar and trademark clearance (`docs/phase0/company/00-decisions.md` §1); if clearance fails, fall back to Probative, then Foqa. | DECIDED (conditional) |
 | D-044 | Pricing architecture | OPEN (Gate H) |
-| D-045 | Analytical store, stream, sandbox isolation technology | OPEN (Phase 0 and 1 benchmarks) |
-| D-046 | Relationship with Laminar (compete, partner, merge) | OPEN (Phase 0) |
+| D-045 | Analytical store, stream, sandbox isolation technology. Phase 0 recommendations accepted as working defaults (ADR-005 ClickHouse, ADR-006 stream, ADR-007 sandbox); final decision at the Phase 1 benchmarks. | PROVISIONAL (Phase 1 benchmarks) |
+| D-046 | **Decided 5 October 2026.** Laminar: compete by default; open a conversation in Phase 1 once the recorder is public; acqui-merge is the only partnership form to pursue. | DECIDED |
 | D-047 | Foundation home for the specification | OPEN (Phase 3) |
 
 ## 6. Change management
 
-A DECIDED item may change. The change records: old decision, new decision, reason, evidence, affected components, migration plan. Changes are appended to this register and to PLAN-05 as the change log. The first batch (D-026, D-028, D-030, D-031 to D-042) was decided on 3 October 2026 on the basis of `docs/archive/research/` and founder review.
+A DECIDED item may change. The change records: old decision, new decision, reason, evidence, affected components, migration plan. Changes are appended to this register and to PLAN-05 as the change log. The first batch (D-026, D-028, D-030, D-031 to D-042) was decided on 3 October 2026 on the basis of `docs/archive/research/` and founder review. The second batch (D-027, D-043, D-046; D-045 provisional) was decided on 5 October 2026 when the founder accepted the Phase 0 recommendations in `docs/phase0/company/00-decisions.md`; the founder also replaced the live interview program with desk research (`docs/phase0/discovery/04-desk-research-method.md`).
 
 ## 7. Source-of-truth hierarchy
 

@@ -1,0 +1,114 @@
+repo,issue,url,date,class,symptom,detected_by,regression_after_change,change_kind,reactions,resolution
+anthropics/claude-code,21925,https://github.com/anthropics/claude-code/issues/21925,2026-01-30,compaction,"Compaction drops CLAUDE.md, auto-continues and breaks its own work",user,unclear,unknown,not_captured,closed-not-planned
+anthropics/claude-code,34556,https://github.com/anthropics/claude-code/issues/34556,2026-03-15,memory,State lost across 59 compactions; user built own memory system,user,no,none,not_captured,closed
+anthropics/claude-code,14081,https://github.com/anthropics/claude-code/issues/14081,2025-12-15,permission,rm -rf ran three times with no permission prompt,user,yes,harness-version,not_captured,closed-not-planned
+anthropics/claude-code,36640,https://github.com/anthropics/claude-code/issues/36640,2026-03-20,permission,"Deleted production NAS data, then reported nothing was deleted",user-late,unclear,unknown,not_captured,closed-duplicate
+anthropics/claude-code,10077,https://github.com/anthropics/claude-code/issues/10077,2025-10-21,permission,rm -rf deleted user's entire home directory,user,yes,harness-version,not_captured,closed-not-planned
+anthropics/claude-code,49129,https://github.com/anthropics/claude-code/issues/49129,2026-04-16,permission,Asked to move files; rm -rf deleted ~1500 files / 50GB,user,no,none,not_captured,closed-not-planned
+anthropics/claude-code,75861,https://github.com/anthropics/claude-code/issues/75861,2026-07-08,subagent,Read-only Explore subagent ran rm -rf with no prompt,user-late,unclear,unknown,not_captured,open
+anthropics/claude-code,15711,https://github.com/anthropics/claude-code/issues/15711,2025-12-29,permission,rm -rf ran despite restrictive allow-list,user,no,none,not_captured,closed-not-planned
+anthropics/claude-code,70687,https://github.com/anthropics/claude-code/issues/70687,2026-06-24,permission,git rm -rf erased 3-year Unity project and .git,user,yes,unknown,not_captured,closed-duplicate
+anthropics/claude-code,21119,https://github.com/anthropics/claude-code/issues/21119,2026-01-26,prompt,CLAUDE.md loaded but overridden by training-data habits,user,no,none,not_captured,closed-duplicate
+anthropics/claude-code,17116,https://github.com/anthropics/claude-code/issues/17116,2026-01-09,prompt,Rule violations became regular after 2.0.76 to 2.1.x upgrade,user,yes,harness-version,not_captured,closed-not-planned
+anthropics/claude-code,42796,https://github.com/anthropics/claude-code/issues/42796,2026-04-02,model,Session-log analysis shows reasoning depth and quality regression,log-audit,yes,model-config,not_captured,closed-maintainer-explained
+anthropics/claude-code,31480,https://github.com/anthropics/claude-code/issues/31480,2026-03-06,model,"Production automation output went incoherent overnight, no local change",user,yes,model-version,not_captured,open
+anthropics/claude-code,49244,https://github.com/anthropics/claude-code/issues/49244,2026-04-16,model,Quality drop coinciding with v2.1.104 to v2.1.109 update,user,yes,harness-version+model,not_captured,closed-not-planned
+anthropics/claude-code,6305,https://github.com/anthropics/claude-code/issues/6305,2025-08-22,hook,PreToolUse/PostToolUse hooks configured but never execute,user,no,none,not_captured,open
+anthropics/claude-code,16047,https://github.com/anthropics/claude-code/issues/16047,2026-01-02,hook,All hooks silently stop after ~2.5 hours in session,log-audit,no,none,not_captured,closed
+anthropics/claude-code,64699,https://github.com/anthropics/claude-code/issues/64699,2026-06-02,hook,Hooks stop firing after editing settings.local.json,log-audit,yes,config-edit,not_captured,closed-not-planned
+anthropics/claude-code,12918,https://github.com/anthropics/claude-code/issues/12918,2025-12-02,permission,Edit/Write deny rules not enforced in v2.0.56,user,yes,harness-version,not_captured,closed-duplicate
+anthropics/claude-code,27002,https://github.com/anthropics/claude-code/issues/27002,2026-02-19,permission,User denies permission prompt; command runs anyway,user,no,none,not_captured,closed-duplicate
+anthropics/claude-code,43142,https://github.com/anthropics/claude-code/issues/43142,2026-04-03,subagent,Subagent bypassed git deny rule; 19k-line file silently reverted,user-late,no,none,not_captured,closed-duplicate
+anthropics/claude-code,21460,https://github.com/anthropics/claude-code/issues/21460,2026-01-28,subagent,PreToolUse hooks not enforced on subagent tool calls,user,no,none,not_captured,closed
+anthropics/claude-code,52557,https://github.com/anthropics/claude-code/issues/52557,2026-04-23,subagent,Subagent escalated to auto mode; 293 unapproved tool calls,user-late,no,none,not_captured,closed-not-planned
+anthropics/claude-code,68619,https://github.com/anthropics/claude-code/issues/68619,2026-06-15,subagent,Recursive subagent spawning burned 4M tokens in under 5 minutes,cost,yes,harness-version,not_captured,open
+anthropics/claude-code,69332,https://github.com/anthropics/claude-code/issues/69332,2026-06-18,subagent,"Background subagents self-spawn exponentially, exhaust usage limit",cost,no,none,not_captured,closed-not-planned
+anthropics/claude-code,69206,https://github.com/anthropics/claude-code/issues/69206,2026-06-17,subagent,Workflow spawned 218 subagents instead of ~10; ~700k tokens,user,no,none,not_captured,closed-not-planned
+anthropics/claude-code,75314,https://github.com/anthropics/claude-code/issues/75314,2026-07-07,budget,"10 background agents ran 34h, ~1M tokens, no cancel",cost,no,none,not_captured,open
+anthropics/claude-code,11913,https://github.com/anthropics/claude-code/issues/11913,2025-11-19,verification,Reported stale test results as a fresh pass,user,no,none,not_captured,closed-not-planned
+anthropics/claude-code,33781,https://github.com/anthropics/claude-code/issues/33781,2026-03-12,verification,E2E tests masked real bugs as expected; ~$40 wasted,user,no,none,not_captured,closed-not-planned
+anthropics/claude-code,77726,https://github.com/anthropics/claude-code/issues/77726,2026-07-15,verification,Bypasses review gates and falsely claims task completion,user,unclear,unknown,not_captured,closed
+anthropics/claude-code,68990,https://github.com/anthropics/claude-code/issues/68990,2026-06-17,verification,Fabricated success confirmations for failed Edit calls,user-late,no,none,not_captured,closed-not-planned
+anthropics/claude-code,51736,https://github.com/anthropics/claude-code/issues/51736,2026-04-21,mcp,Custom MCP server tools vanish after update to 2.1.116,user,yes,harness-version,not_captured,closed-not-planned
+anthropics/claude-code,60061,https://github.com/anthropics/claude-code/issues/60061,2026-05-17,mcp,"MCP calls hang forever after SSE drop, no error shown",log-audit,no,none,not_captured,closed-not-planned
+anthropics/claude-code,85422,https://github.com/anthropics/claude-code/issues/85422,2026-08-10,budget,No runtime spend cap; users learn by being locked out,cost,no,none,not_captured,open
+anthropics/claude-code,24460,https://github.com/anthropics/claude-code/issues/24460,2026-02-09,compaction,/compact summarizes away CLAUDE.md project rules,user,no,none,not_captured,closed-not-planned
+anthropics/claude-code,98381,https://github.com/anthropics/claude-code/issues/98381,2026-09-30,verification,"Claims completion without verifying, across many sessions",user,no,none,not_captured,open
+anthropics/claude-code,19467,https://github.com/anthropics/claude-code/issues/19467,2026-01-20,model,Quality regression after switch to Opus 4.5,user,yes,model-version,not_captured,closed-not-planned
+anthropics/claude-code,39468,https://github.com/anthropics/claude-code/issues/39468,2026-03-26,hook,Skill/agent frontmatter hooks silently never registered,log-audit,unclear,unknown,not_captured,closed-duplicate
+anthropics/claude-code,83362,https://github.com/anthropics/claude-code/issues/83362,2026-08-02,permission,'ask' rules silently ignored in interactive sessions,user,no,none,not_captured,open
+openai/codex,6834,https://github.com/openai/codex/issues/6834,2025-11-18,budget,Invalid function_call loop burned ~10M tokens; usage untracked,cost,no,none,not_captured,closed-not-planned
+openai/codex,44305,https://github.com/openai/codex/issues/44305,2026-09-09,context,Duplicate tool calls snowball context to millions of input tokens,log-audit,no,none,not_captured,open
+openai/codex,37090,https://github.com/openai/codex/issues/37090,2026-08-05,compaction,Repeated compaction loops exhausted weekly limit in 62 hours,cost,no,none,not_captured,open
+openai/codex,27590,https://github.com/openai/codex/issues/27590,2026-06-11,retry,Resume after credit exhaustion loops forever consuming credits,cost,no,none,not_captured,open
+openai/codex,25792,https://github.com/openai/codex/issues/25792,2026-06-02,compaction,Compaction forgets AGENTS rules; progress drops 97% to 42%,user,unclear,model-version,not_captured,open
+openai/codex,5772,https://github.com/openai/codex/issues/5772,2025-10-26,compaction,AGENTS.md not re-read after auto-compact,user,no,none,not_captured,closed
+openai/codex,13386,https://github.com/openai/codex/issues/13386,2026-03-03,prompt,"AGENTS.md over 32KB silently truncated, no warning",user-late,no,none,not_captured,open
+openai/codex,18720,https://github.com/openai/codex/issues/18720,2026-04-20,compaction,Auto-compact silently changed the requested solution mid-task,user-late,no,none,not_captured,closed
+openai/codex,35707,https://github.com/openai/codex/issues/35707,2026-07-28,tool,Recursive cleanup filter destroyed entire Git repository,user,no,none,not_captured,open
+openai/codex,46022,https://github.com/openai/codex/issues/46022,2026-09-16,environment,Windows: deleted hundreds of GB outside project scope,user-late,no,none,not_captured,open
+openai/codex,3934,https://github.com/openai/codex/issues/3934,2025-09-19,verification,rm -rf timed out; agent claimed no changes were made,user,no,none,not_captured,closed-duplicate
+openai/codex,6801,https://github.com/openai/codex/issues/6801,2025-11-17,permission,Full-shell agent ran rm -rf * deleting whole project,user,no,none,not_captured,closed
+openai/codex,50807,https://github.com/openai/codex/issues/50807,2026-10-04,permission,'Ask for approval' mode escalated with no prompt,user,no,none,not_captured,open
+openai/codex,36570,https://github.com/openai/codex/issues/36570,2026-08-02,permission,auto_review setting silently overrides --sandbox read-only,user,no,config-interaction,not_captured,open
+openai/codex,36086,https://github.com/openai/codex/issues/36086,2026-07-30,model,Severe quality collapse overnight with no local change,user,yes,model-version,not_captured,open
+openai/codex,49828,https://github.com/openai/codex/issues/49828,2026-10-01,verification,"Understands rules, implements wrongly, misses it in self-review",user,unclear,model-version,not_captured,open
+openai/codex,43496,https://github.com/openai/codex/issues/43496,2026-09-07,context,0.153.4 loses reasoning continuity; unusable for real work,user,yes,harness-version,not_captured,open
+openai/codex,42253,https://github.com/openai/codex/issues/42253,2026-09-02,permission,Deleted whole staging dir without configured approval popup,user,no,none,not_captured,open
+openai/codex,2927,https://github.com/openai/codex/issues/2927,2025-08-30,compaction,AGENTS.md ignored after /compact,user,no,none,not_captured,closed
+openai/codex,44604,https://github.com/openai/codex/issues/44604,2026-09-10,tool,Tool-output race wedges thread with repeating 400 error,user,no,none,not_captured,open
+openai/codex,38312,https://github.com/openai/codex/issues/38312,2026-08-13,permission,Deleted important project files without request or confirmation,user-late,no,none,not_captured,open
+openai/codex,42355,https://github.com/openai/codex/issues/42355,2026-09-02,tool,git clean on nested ignored paths deleted config directory,user-late,no,none,not_captured,open
+openai/codex,43343,https://github.com/openai/codex/issues/43343,2026-09-07,environment,Windows quoting let recursive delete escape workspace,log-audit,no,none,not_captured,open
+google-gemini/gemini-cli,15821,https://github.com/google-gemini/gemini-cli/issues/15821,2026-01-02,permission,Agent deleted entire project directory unprompted,user-late,no,none,not_captured,closed-not-planned
+google-gemini/gemini-cli,2617,https://github.com/google-gemini/gemini-cli/issues/2617,2025-06-30,permission,"After 'allow always', rm -rf wiped home folder",user,no,none,not_captured,closed-fixed
+google-gemini/gemini-cli,25671,https://github.com/google-gemini/gemini-cli/issues/25671,2026-04-19,mcp,sequentialthinking MCP tool looped 1039 times to quota exhaustion,cost,no,none,not_captured,closed-not-planned
+google-gemini/gemini-cli,4464,https://github.com/google-gemini/gemini-cli/issues/4464,2025-07-18,retry,"Failed-edit loop, no error reported, burns tokens",cost,no,none,not_captured,closed-duplicate
+google-gemini/gemini-cli,15037,https://github.com/google-gemini/gemini-cli/issues/15037,2025-12-13,prompt,Committed to main despite GEMINI.md never-commit rule,user-late,yes,unknown,not_captured,closed-not-planned
+google-gemini/gemini-cli,10238,https://github.com/google-gemini/gemini-cli/issues/10238,2025-09-30,budget,0.8.0 falls back to Flash far earlier than 0.6,user,yes,harness-version,not_captured,closed-not-planned
+google-gemini/gemini-cli,1568,https://github.com/google-gemini/gemini-cli/issues/1568,2025-06-25,tool,Deletes ~500 lines while claiming to fix something,user-late,no,none,not_captured,closed
+google-gemini/gemini-cli,13852,https://github.com/google-gemini/gemini-cli/issues/13852,2025-11-26,prompt,GEMINI.md instructions ignored by Gemini 3 Pro,user,no,none,not_captured,open
+google-gemini/gemini-cli,13324,https://github.com/google-gemini/gemini-cli/issues/13324,2025-11-18,tool,"After a loop, deleted existing test file then searched for it",user,no,none,not_captured,closed-not-planned
+cline/cline,5616,https://github.com/cline/cline/issues/5616,2025-08-16,compaction,New condensing feature burns tokens and loses context,user,yes,harness-version,not_captured,closed
+cline/cline,5790,https://github.com/cline/cline/issues/5790,2025-08-24,compaction,Auto-compact at 160k makes agent redo finished work,user,no,none,not_captured,closed-not-planned
+cline/cline,5842,https://github.com/cline/cline/issues/5842,2025-08-27,context,Since 3.25 redoes work just completed in same session,user,yes,harness-version,not_captured,closed
+cline/cline,9673,https://github.com/cline/cline/issues/9673,2026-03-05,subagent,"Subagent stuck re-reading files, draining tokens",cost,no,none,not_captured,closed
+cline/cline,13333,https://github.com/cline/cline/issues/13333,2026-08-18,compaction,Compaction skip ignores headroom; task fails at limit,code-review,no,none,not_captured,closed
+cline/cline,3437,https://github.com/cline/cline/issues/3437,2025-05-10,prompt,Clinerules disappear after v3.15.0 update,user,yes,harness-version,not_captured,closed-duplicate
+cline/cline,14186,https://github.com/cline/cline/issues/14186,2026-09-16,prompt,Extension ignores .cline/rules; behavior differs per teammate,user,no,none,not_captured,closed
+cline/cline,6154,https://github.com/cline/cline/issues/6154,2025-09-12,prompt,.clinerules ignored; premature attempt_completion,user,no,none,not_captured,closed
+sst/opencode (anomalyco/opencode),34445,https://github.com/anomalyco/opencode/issues/34445,2026-06-29,memory,Storage migration update lost all session history,user,yes,harness-version,not_captured,closed-not-planned
+sst/opencode (anomalyco/opencode),52697,https://github.com/anomalyco/opencode/issues/52697,2026-10-02,compaction,Compaction fixed point: eternal loop over 26 cycles,user,no,none,not_captured,closed-not-planned
+sst/opencode (anomalyco/opencode),27924,https://github.com/anomalyco/opencode/issues/27924,2026-05-16,compaction,"Compaction loop has no break condition, burns credits",code-review,no,none,not_captured,open
+sst/opencode (anomalyco/opencode),39560,https://github.com/anomalyco/opencode/issues/39560,2026-07-29,environment,"Consecutive updates wiped sessions, providers and MCP config",user,yes,harness-version,not_captured,closed-not-planned
+sst/opencode (anomalyco/opencode),49965,https://github.com/anomalyco/opencode/issues/49965,2026-09-19,compaction,Compaction fires after every tool call on Ollama,log-audit,no,none,not_captured,open
+block/goose (aaif-goose/goose),7645,https://github.com/block/goose/issues/7645,2026-03-04,subagent,Subagent/summon stream decode error since v1.25.0,user,yes,harness-version,not_captured,closed
+block/goose (aaif-goose/goose),5957,https://github.com/block/goose/issues/5957,2025-12-03,tool,Auto tool chaining stops after first tool in 1.15.0,user,yes,harness-version,not_captured,closed
+block/goose (aaif-goose/goose),7839,https://github.com/block/goose/issues/7839,2026-03-12,compaction,"Wrong context limit triggers premature compaction, history lost",log-audit,no,none,not_captured,closed-fixed
+block/goose (aaif-goose/goose),12498,https://github.com/block/goose/issues/12498,2026-09-24,budget,Cache-write tokens dropped; cost under-reported ~20%,code-review,no,none,not_captured,closed-fixed
+block/goose (aaif-goose/goose),12043,https://github.com/block/goose/issues/12043,2026-09-13,unknown,No way to reproduce a session after the fact,user,no,none,not_captured,closed
+langchain-ai/langgraph,6731,https://github.com/langchain-ai/langgraph/issues/6731,2026-01-30,tool,Agent loops to recursion limit after upgrade to 1.0.6,user,yes,dependency-version,not_captured,closed-not-planned
+langchain-ai/langgraph,9185,https://github.com/langchain-ai/langgraph/issues/9185,2026-10-04,retry,Resume after tool error re-runs side effect (e.g. payment),code-review,no,none,not_captured,open
+langchain-ai/langgraph,6486,https://github.com/langchain-ai/langgraph/issues/6486,2025-11-22,tool,Tool error handling disabled by default after 1.0.1,user,yes,dependency-version,not_captured,open
+langchain-ai/langgraph,8298,https://github.com/langchain-ai/langgraph/issues/8298,2026-07-08,memory,Checkpoints never flushed; crash loses all thread state,user-late,no,none,not_captured,closed
+langchain-ai/langgraph,6363,https://github.com/langchain-ai/langgraph/issues/6363,2025-10-30,tool,prebuilt 1.0.2 breaks ToolNode.afunc overrides on rebuild,user,yes,dependency-version,not_captured,open
+crewAIInc/crewAI,3847,https://github.com/crewAIInc/crewAI/issues/3847,2025-11-06,budget,max_iter reached but loop continues; break lost in refactor,code-review,yes,harness-version,not_captured,closed
+crewAIInc/crewAI,3154,https://github.com/crewAIInc/crewAI/issues/3154,2025-07-14,verification,Agent fabricates tool observations without calling tool,trace,no,none,not_captured,closed-not-planned
+crewAIInc/crewAI,2881,https://github.com/crewAIInc/crewAI/issues/2881,2025-05-22,tool,"v0.121.0 re-invokes tools repeatedly, recursion error",user,yes,harness-version,not_captured,closed-not-planned
+crewAIInc/crewAI,6414,https://github.com/crewAIInc/crewAI/issues/6414,2026-07-01,budget,Tool/delegation loops burn thousands of dollars in credits,cost,no,none,not_captured,open
+openai/openai-agents-python,191,https://github.com/openai/openai-agents-python/issues/191,2025-03-17,tool,Repeats tool call with varied args until max_turns,user,no,none,not_captured,closed-not-planned
+openai/openai-agents-python,5289,https://github.com/openai/openai-agents-python/issues/5289,2026-10-03,unknown,tracing_disabled ignored inside a caller-opened trace,code-review,no,none,not_captured,closed-fixed
+openai/openai-agents-python,844,https://github.com/openai/openai-agents-python/issues/844,2025-06-11,budget,"Agent ignores turn-limit hook, hits MaxTurnsExceeded",user,no,none,not_captured,closed-not-planned
+openai/openai-agents-python,741,https://github.com/openai/openai-agents-python/issues/741,2025-05-22,subagent,Handoff not resumed next turn; slot filling breaks,user,no,none,not_captured,closed-not-planned
+microsoft/autogen,391,https://github.com/microsoft/autogen/issues/391,2023-10-23,subagent,"Two-agent chat ignores TERMINATE, loops to reply cap",user,no,none,not_captured,closed
+microsoft/autogen,1406,https://github.com/microsoft/autogen/issues/1406,2024-01-26,subagent,Agents keep talking after task is solved,user,no,none,not_captured,closed
+microsoft/autogen,4307,https://github.com/microsoft/autogen/issues/4307,2024-11-22,tool,"Agent stuck tool-calling, never returns to team manager",user,no,none,not_captured,closed
+google/adk-python,4179,https://github.com/google/adk-python/issues/4179,2026-01-16,tool,mode=ANY makes sub-agent-as-tool loop on same tool,user,yes,config-edit,not_captured,closed
+google/adk-python,3413,https://github.com/google/adk-python/issues/3413,2025-11-05,tool,output_schema plus tools loops ~50 tool calls in v1.18.0,user,yes,harness-version,not_captured,closed
+google/adk-python,3971,https://github.com/google/adk-python/issues/3971,2025-12-18,memory,Interrupted tool_use without result causes permanent crash loop,user,no,none,not_captured,closed
+google/adk-python,1738,https://github.com/google/adk-python/issues/1738,2025-07-01,context,LlmAgent loses conversation after tool response,user,no,none,not_captured,closed
+anthropics/claude-agent-sdk-python,213,https://github.com/anthropics/claude-agent-sdk-python/issues/213,2025-10-07,hook,Hooks never fire; dangerous commands not blocked,user,no,none,not_captured,closed-duplicate
+microsoft/vscode (Copilot agent),303787,https://github.com/microsoft/vscode/issues/303787,2026-03-21,permission,Agent file ops deleted files system-wide outside workspace,user-late,no,none,not_captured,closed-not-planned
+microsoft/vscode (Copilot agent),264906,https://github.com/microsoft/vscode/issues/264906,2025-09-03,environment,"Restarts recreate deleted files empty, zero out others",user-late,no,none,not_captured,closed
+microsoft/vscode (Copilot agent),251004,https://github.com/microsoft/vscode/issues/251004,2025-06-09,tool,Runs commands while agent edits pending; tests hit stale files,user,no,none,not_captured,closed
+microsoft/copilot-intellij-feedback,373,https://github.com/microsoft/copilot-intellij-feedback/issues/373,2025-06-25,tool,Agent mode deletes hundreds of unrelated lines in large files,user,unclear,unknown,not_captured,closed

@@ -1,6 +1,6 @@
 # SPEC-01 — Telemetry and Execution Graph, v0.1
 
-**Version:** 0.1.0 · **Status:** PROPOSED (Phase 0 draft for stream review) · **Owner:** Capture & Standards with Execution Graph · **Depends on:** PLAN-11, PLAN-12, research 01, 02, 03, 04 · **Machine-readable form:** `src/harness_engine/model/events.py`, JSON Schema in `docs/specs/schema/` (generated) · **Validated against:** real Claude Code 2.1.289 captures (Proofs A, D, E) · **Decision log:** §12 · **Open questions:** §13
+**Version:** 0.1.0 · **Status:** APPROVED v0.1 (founder approval 2026-10-05; Phase 1 baseline) · **Owner:** Capture & Standards with Execution Graph · **Depends on:** PLAN-11, PLAN-12, research 01, 02, 03, 04 · **Machine-readable form:** `src/harness_engine/model/events.py`, JSON Schema in `docs/specs/schema/` (generated) · **Validated against:** real Claude Code 2.1.289 captures (Proofs A, D, E) · **Decision log:** §12 · **Open questions:** §13
 
 ## 1. Purpose and first principles
 
