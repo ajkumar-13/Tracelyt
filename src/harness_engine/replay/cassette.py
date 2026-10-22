@@ -24,13 +24,19 @@ VOLATILE_IDS = [
     (re.compile(r"/tasks/[0-9a-f]{12,}\.output"), "/tasks/<id>.output"),
     (re.compile(r"[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"), "<uuid>"),
 ]
+# Environment noise inside tool outputs that carries no state: wall-clock durations printed by test runners and
+# shells. Exit codes and file state are compared unnormalized.
+VOLATILE_NOISE = [
+    (re.compile(r"\bin \d+\.\d+s\b"), "in <t>s"),
+    (re.compile(r"\b\d+\.\d+ ?(s|ms|seconds)\b"), "<t>\\1"),
+]
 
 
 def _norm_text(t: str) -> str:
     t = SYSTEM_REMINDER.sub("", t)
     t = TOTAL_TOKENS.sub("", t)
     t = BILLING_HEADER.sub("", t)
-    for rx, rep in VOLATILE_IDS:
+    for rx, rep in VOLATILE_IDS + VOLATILE_NOISE:
         t = rx.sub(rep, t)
     return t.strip()
 
