@@ -1,0 +1,298 @@
+{
+ "summary": {
+  "cassette_envelopes": 11,
+  "runs": 3,
+  "coverage_all_runs": true,
+  "request_levels": [
+   {
+    "delta": 11,
+    "no-candidate": 1
+   },
+   {
+    "delta": 11,
+    "no-candidate": 1
+   },
+   {
+    "delta": 11,
+    "no-candidate": 1
+   }
+  ],
+  "first_divergence": [
+   12,
+   12,
+   12
+  ],
+  "tool_result_agreement": [
+   "9/9",
+   "9/9",
+   "9/9"
+  ],
+  "final_tree_agree": [
+   true,
+   true,
+   true
+  ],
+  "identical_across_runs": true,
+  "exit_codes": [
+   0,
+   0,
+   0
+  ],
+  "wall_s": [
+   3.2,
+   3.2,
+   3.2
+  ],
+  "config_drift": [
+   {
+    "calls": 11,
+    "paths": [
+     "$.betas",
+     "$.system",
+     "$.system[1].text",
+     "$.tools",
+     "$.tools[2].name",
+     "$.tools[2].schema",
+     "$.tools[3].name",
+     "$.tools[3].schema",
+     "$.tools[4].name",
+     "$.tools[4].schema",
+     "$.tools[5].name",
+     "$.tools[5].schema"
+    ]
+   },
+   {
+    "calls": 11,
+    "paths": [
+     "$.betas",
+     "$.system",
+     "$.system[1].text",
+     "$.tools",
+     "$.tools[2].name",
+     "$.tools[2].schema",
+     "$.tools[3].name",
+     "$.tools[3].schema",
+     "$.tools[4].name",
+     "$.tools[4].schema",
+     "$.tools[5].name",
+     "$.tools[5].schema"
+    ]
+   },
+   {
+    "calls": 11,
+    "paths": [
+     "$.betas",
+     "$.system",
+     "$.system[1].text",
+     "$.tools",
+     "$.tools[2].name",
+     "$.tools[2].schema",
+     "$.tools[3].name",
+     "$.tools[3].schema",
+     "$.tools[4].name",
+     "$.tools[4].schema",
+     "$.tools[5].name",
+     "$.tools[5].schema"
+    ]
+   }
+  ],
+  "extra_requests": [
+   [
+    12
+   ],
+   [
+    12
+   ],
+   [
+    12
+   ]
+  ],
+  "R2_frozen_self_replay": "pass",
+  "R2_note": "new-input agreement on every served call; harness configuration drift reported separately"
+ },
+ "runs": [
+  {
+   "run": 1,
+   "session_id": "3bbcc928-1f0e-4baf-8b49-2ddfdd805ba0",
+   "exit_code": 0,
+   "wall_s": 3.2,
+   "match": {
+    "envelopes": 11,
+    "requests_seen": 12,
+    "served": 11,
+    "coverage": 1.0,
+    "levels": {
+     "delta": 11,
+     "no-candidate": 1
+    },
+    "first_divergence_seq": 12,
+    "config_drift_calls": 11,
+    "config_drift_paths": [
+     "$.betas",
+     "$.system",
+     "$.system[1].text",
+     "$.tools",
+     "$.tools[2].name",
+     "$.tools[2].schema",
+     "$.tools[3].name",
+     "$.tools[3].schema",
+     "$.tools[4].name",
+     "$.tools[4].schema",
+     "$.tools[5].name",
+     "$.tools[5].schema"
+    ],
+    "extra_requests": [
+     12
+    ],
+    "divergences": [
+     {
+      "seq": 12,
+      "expected_key": "",
+      "actual_key": "",
+      "candidate_index": null,
+      "reason": "no unserved initial envelope",
+      "field_diff": []
+     }
+    ]
+   },
+   "unmatched_endpoints": [],
+   "tool_results": {
+    "recorded": 9,
+    "replayed_seen": 9,
+    "agree": 9,
+    "disagree": []
+   },
+   "final_tree": {
+    "calc.py": "e82f956f5c8a522ec6a927b7edb72dcb4e9262b4c9a5e141fc6d0495b40560b4",
+    "CLAUDE.md": "4732760907fa2fea3cc0e247fbb27fc88f4174a401d70891202091af5a01d5d4"
+   },
+   "recorded_final_tree": {
+    "calc.py": "e82f956f5c8a522ec6a927b7edb72dcb4e9262b4c9a5e141fc6d0495b40560b4",
+    "CLAUDE.md": "4732760907fa2fea3cc0e247fbb27fc88f4174a401d70891202091af5a01d5d4"
+   },
+   "final_tree_agree": true
+  },
+  {
+   "run": 2,
+   "session_id": "55786a9c-ff6b-41e4-9fc7-acee159c340d",
+   "exit_code": 0,
+   "wall_s": 3.2,
+   "match": {
+    "envelopes": 11,
+    "requests_seen": 12,
+    "served": 11,
+    "coverage": 1.0,
+    "levels": {
+     "delta": 11,
+     "no-candidate": 1
+    },
+    "first_divergence_seq": 12,
+    "config_drift_calls": 11,
+    "config_drift_paths": [
+     "$.betas",
+     "$.system",
+     "$.system[1].text",
+     "$.tools",
+     "$.tools[2].name",
+     "$.tools[2].schema",
+     "$.tools[3].name",
+     "$.tools[3].schema",
+     "$.tools[4].name",
+     "$.tools[4].schema",
+     "$.tools[5].name",
+     "$.tools[5].schema"
+    ],
+    "extra_requests": [
+     12
+    ],
+    "divergences": [
+     {
+      "seq": 12,
+      "expected_key": "",
+      "actual_key": "",
+      "candidate_index": null,
+      "reason": "no unserved initial envelope",
+      "field_diff": []
+     }
+    ]
+   },
+   "unmatched_endpoints": [],
+   "tool_results": {
+    "recorded": 9,
+    "replayed_seen": 9,
+    "agree": 9,
+    "disagree": []
+   },
+   "final_tree": {
+    "calc.py": "e82f956f5c8a522ec6a927b7edb72dcb4e9262b4c9a5e141fc6d0495b40560b4",
+    "CLAUDE.md": "4732760907fa2fea3cc0e247fbb27fc88f4174a401d70891202091af5a01d5d4"
+   },
+   "recorded_final_tree": {
+    "calc.py": "e82f956f5c8a522ec6a927b7edb72dcb4e9262b4c9a5e141fc6d0495b40560b4",
+    "CLAUDE.md": "4732760907fa2fea3cc0e247fbb27fc88f4174a401d70891202091af5a01d5d4"
+   },
+   "final_tree_agree": true
+  },
+  {
+   "run": 3,
+   "session_id": "6049d6a6-2e55-40f2-8b14-8e6e8aaa322d",
+   "exit_code": 0,
+   "wall_s": 3.2,
+   "match": {
+    "envelopes": 11,
+    "requests_seen": 12,
+    "served": 11,
+    "coverage": 1.0,
+    "levels": {
+     "delta": 11,
+     "no-candidate": 1
+    },
+    "first_divergence_seq": 12,
+    "config_drift_calls": 11,
+    "config_drift_paths": [
+     "$.betas",
+     "$.system",
+     "$.system[1].text",
+     "$.tools",
+     "$.tools[2].name",
+     "$.tools[2].schema",
+     "$.tools[3].name",
+     "$.tools[3].schema",
+     "$.tools[4].name",
+     "$.tools[4].schema",
+     "$.tools[5].name",
+     "$.tools[5].schema"
+    ],
+    "extra_requests": [
+     12
+    ],
+    "divergences": [
+     {
+      "seq": 12,
+      "expected_key": "",
+      "actual_key": "",
+      "candidate_index": null,
+      "reason": "no unserved initial envelope",
+      "field_diff": []
+     }
+    ]
+   },
+   "unmatched_endpoints": [],
+   "tool_results": {
+    "recorded": 9,
+    "replayed_seen": 9,
+    "agree": 9,
+    "disagree": []
+   },
+   "final_tree": {
+    "calc.py": "e82f956f5c8a522ec6a927b7edb72dcb4e9262b4c9a5e141fc6d0495b40560b4",
+    "CLAUDE.md": "4732760907fa2fea3cc0e247fbb27fc88f4174a401d70891202091af5a01d5d4"
+   },
+   "recorded_final_tree": {
+    "calc.py": "e82f956f5c8a522ec6a927b7edb72dcb4e9262b4c9a5e141fc6d0495b40560b4",
+    "CLAUDE.md": "4732760907fa2fea3cc0e247fbb27fc88f4174a401d70891202091af5a01d5d4"
+   },
+   "final_tree_agree": true
+  }
+ ]
+}
