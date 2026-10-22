@@ -94,6 +94,8 @@ class ReplayServer:
                           "config_drift": None if not r.config_drift else r.config_drift[:6],
                           "divergence": None if not r.divergence else {"reason": r.divergence.reason, "field_diff": r.divergence.field_diff[:10]}})
                 if r.envelope is None:
+                    # No fixture. Harness side calls (post-turn summaries, title generation) land here after the
+                    # recorded turn is complete; the harness tolerates the error and the run still ends normally.
                     self._json(409, {"type": "error", "error": {"type": "replay_divergence", "message": (r.divergence.reason if r.divergence else "no candidate")}})
                     return
                 msg = r.envelope.response
