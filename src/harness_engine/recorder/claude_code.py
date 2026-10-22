@@ -14,11 +14,14 @@ HOOK_EVENTS = ["SessionStart", "InstructionsLoaded", "UserPromptSubmit", "PreToo
                "PostToolUse", "PostToolUseFailure", "SubagentStart", "SubagentStop", "Stop", "PreCompact", "PostCompact", "SessionEnd"]
 HOOKDUMP = '''#!/usr/bin/env bash
 # Append the raw stdin JSON for every hook event, tagged with the event name from argv[1].
+# Captures go to $QAR_CAPTURE_DIR (inherited by hook subprocesses; OTEL_* variables are not), outside the
+# workspace so the agent's own tools never see the recorder's files. Fallback: ./captures inside the workspace.
 d="$(cat)"
-printf '{"_hook":"%s","_ts":"%s","_pid":%s,"payload":%s}\\n' "$1" "$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)" "$$" "$d" >> "$CLAUDE_PROJECT_DIR/captures/hooks.jsonl"
+out="${QAR_CAPTURE_DIR:-$CLAUDE_PROJECT_DIR/captures}"; mkdir -p "$out"
+printf '{"_hook":"%s","_ts":"%s","_pid":%s,"payload":%s}\\n' "$1" "$(date -u +%Y-%m-%dT%H:%M:%S.%NZ)" "$$" "$d" >> "$out/hooks.jsonl"
 exit 0
 '''
-IGNORE_TREE = ("captures", "__pycache__", ".claude", ".pytest_cache")
+IGNORE_TREE = ("captures", "captures_recorded", "__pycache__", ".claude", ".pytest_cache")
 
 
 def tree_hashes(d: str, ignore=IGNORE_TREE) -> dict:
@@ -72,7 +75,6 @@ def prepare_workspace(workspace: str, files: dict[str, str] | None = None, rules
     """Create the pre-run tree: project files, rules file, hook configuration, agent definitions."""
     if clean and os.path.isdir(workspace): shutil.rmtree(workspace)
     os.makedirs(os.path.join(workspace, ".claude"), exist_ok=True)
-    os.makedirs(os.path.join(workspace, "captures"), exist_ok=True)
     for rel, content in (files or {}).items():
         p = os.path.join(workspace, rel); os.makedirs(os.path.dirname(p), exist_ok=True); open(p, "w").write(content)
     if rules is not None: open(os.path.join(workspace, "CLAUDE.md"), "w").write(rules)
@@ -97,9 +99,10 @@ def config_hash(workspace: str) -> str:
 
 def record(workspace: str, prompt: str, model: str, claude_bin: str = "claude", allowed_tools: str | None = None,
            permission_mode: str = "acceptEdits", max_turns: int = 25, timeout: int = 600, session_id: str | None = None,
-           extra_env: dict | None = None, label: str = "") -> dict:
-    """Run one headless Claude Code session with every capture channel on. Returns and writes the manifest."""
-    ws = os.path.abspath(workspace); cap = os.path.join(ws, "captures"); os.makedirs(cap, exist_ok=True)
+           extra_env: dict | None = None, label: str = "", capture_dir: str | None = None) -> dict:
+    """Run one headless Claude Code session with every capture channel on. Returns and writes the manifest.
+    Captures default to `<workspace>.captures`, a sibling directory: nothing of the recorder's is visible to the agent."""
+    ws = os.path.abspath(workspace); cap = os.path.abspath(capture_dir or ws.rstrip("/") + ".captures"); os.makedirs(cap, exist_ok=True)
     pre = tree_hashes(ws); json.dump(pre, open(os.path.join(cap, "tree_pre.json"), "w"), indent=1)
     # The pre-run tree is archived, not copied as files: a loose copy inside the workspace is visible to the agent's
     # own tools (pytest collected the duplicate test module in the first smoke recording).
@@ -111,7 +114,7 @@ def record(workspace: str, prompt: str, model: str, claude_bin: str = "claude", 
     env.update({"CLAUDE_CODE_ENABLE_TELEMETRY": "1", "OTEL_LOGS_EXPORTER": "otlp", "OTEL_METRICS_EXPORTER": "otlp",
                 "OTEL_EXPORTER_OTLP_PROTOCOL": "http/json", "OTEL_EXPORTER_OTLP_ENDPOINT": f"http://127.0.0.1:{rx.port}",
                 "OTEL_LOG_TOOL_DETAILS": "1", "OTEL_LOG_USER_PROMPTS": "1", "OTEL_LOGS_EXPORT_INTERVAL": "1000",
-                "OTEL_METRIC_EXPORT_INTERVAL": "2000", "OTEL_LOG_RAW_API_BODIES": f"file:{cap}/rawbodies"})
+                "OTEL_METRIC_EXPORT_INTERVAL": "2000", "OTEL_LOG_RAW_API_BODIES": f"file:{cap}/rawbodies", "QAR_CAPTURE_DIR": cap})
     env.update(extra_env or {})
     cmd = [claude_bin, "-p", prompt, "--model", model, "--session-id", sid, "--output-format", "stream-json", "--verbose",
            "--max-turns", str(max_turns), "--permission-mode", permission_mode]
@@ -135,7 +138,7 @@ def record(workspace: str, prompt: str, model: str, claude_bin: str = "claude", 
         betas = req.get("betas"); sysb = req.get("system")
         if isinstance(sysb, list) and sysb and "cc_entrypoint=" in sysb[0].get("text", ""):
             entry = sysb[0]["text"].split("cc_entrypoint=")[1].split(";")[0]
-    manifest = {"label": label, "session_id": sid, "workspace": ws, "prompt": prompt, "model": model, "harness": f"claude-code@{version}",
+    manifest = {"label": label, "session_id": sid, "workspace": ws, "capture_dir": cap, "prompt": prompt, "model": model, "harness": f"claude-code@{version}",
                 "entrypoint": entry or init.get("startup_timing", {}).get("entrypoint"), "api_key_source": init.get("apiKeySource"),
                 "permission_mode": permission_mode, "allowed_tools": allowed_tools, "max_turns": max_turns, "api_betas": betas,
                 "harness_config_hash": config_hash(ws), "started_at": t0, "wall_s": round(time.time() - t0, 1), "exit_code": rc,

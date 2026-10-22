@@ -16,7 +16,8 @@ def test_prepare_workspace_writes_rules_hooks_and_files(tmp_path, monkeypatch):
     assert os.path.exists(os.path.join(ws, ".claude", "agents", "reviewer.md"))
     trust = json.load(open(tmp_path / "home" / ".claude.json"))
     assert trust["projects"][os.path.abspath(ws)]["hasTrustDialogAccepted"] is True
-    assert tree_hashes(ws) == {"CLAUDE.md": tree_hashes(ws)["CLAUDE.md"], "test_target.py": tree_hashes(ws)["test_target.py"]}
+    assert sorted(tree_hashes(ws)) == ["CLAUDE.md", "test_target.py"]
+    assert "QAR_CAPTURE_DIR" in open(os.path.join(ws, ".claude", "hookdump.sh")).read()
 
 
 def test_config_hash_changes_with_rules_file_and_hooks(tmp_path, monkeypatch):

@@ -29,6 +29,10 @@ VOLATILE_IDS = [
 VOLATILE_NOISE = [
     (re.compile(r"\bin \d+\.\d+s\b"), "in <t>s"),
     (re.compile(r"\b\d+\.\d+ ?(s|ms|seconds)\b"), "<t>\\1"),
+    # `ls -l` style listings: modification times and link counts describe the host, not the recorded workspace
+    # state (the parent directory's link count changed as sibling runs were recorded). File names and sizes stay.
+    (re.compile(r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) +\d{1,2} +(\d{2}:\d{2}|\d{4})\b"), "<mtime>"),
+    (re.compile(r"^([d\-l][rwxsStT\-]{9}\+?) +\d+ ", re.M), "\\1 <n> "),
 ]
 
 

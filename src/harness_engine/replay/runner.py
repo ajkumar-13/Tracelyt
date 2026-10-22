@@ -24,7 +24,7 @@ def _tool_results(c: Cassette) -> dict:
 def reset_to_pre_tree(ws: str, cap: str):
     """Restore the workspace to the recorded pre-run tree; keep .claude; move live captures aside."""
     for name in os.listdir(ws):
-        if name in (".claude", "captures"): continue
+        if name in (".claude", "captures", "captures_recorded"): continue
         p = os.path.join(ws, name); shutil.rmtree(p) if os.path.isdir(p) else os.remove(p)
     with tarfile.open(os.path.join(cap, "tree_pre.tar")) as tar:
         tar.extractall(ws)
@@ -38,19 +38,21 @@ def replay_run(capture_dir: str, claude_bin: str, out_dir: str, policy: str = "r
     results = []
     for i in range(1, runs + 1):
         run_out = os.path.join(out_dir, f"run{i}"); os.makedirs(run_out, exist_ok=True)
-        live_cap = os.path.join(ws, "captures")
-        if os.path.isdir(live_cap) and os.path.abspath(live_cap) != cap:
-            shutil.rmtree(live_cap)
-        if os.path.abspath(live_cap) == cap:                 # recording lives in the workspace: move it out first
-            moved = os.path.join(out_dir, "recorded_captures")
-            if not os.path.isdir(moved): shutil.move(cap, moved)
-            cap = moved; cassette_dir = os.path.join(cap, "rawbodies")
+        if man.get("capture_dir"):                          # recorder >= this version: captures live outside the workspace
+            live_cap = os.path.join(run_out, "captures")
+        else:                                                # earlier recordings kept captures inside the workspace
+            live_cap = os.path.join(ws, "captures")
+            if os.path.abspath(live_cap) == cap:             # move the recording OUT of the tree the agent can see
+                moved = ws.rstrip("/") + ".recorded"          # (ls counted it: Proof G2 finding)
+                if not os.path.isdir(moved): shutil.move(cap, moved)
+                cap = moved; cassette_dir = os.path.join(cap, "rawbodies")
+            if os.path.isdir(live_cap): shutil.rmtree(live_cap)
         os.makedirs(live_cap, exist_ok=True)
         reset_to_pre_tree(ws, cap)
         cassette = Cassette.from_raw_bodies(cassette_dir)
         srv = ReplayServer(cassette, run_out, policy=policy).start()
         env = dict(os.environ); env.pop("ANTHROPIC_API_KEY", None)
-        env.update({"ANTHROPIC_BASE_URL": srv.base_url, "OTEL_LOG_RAW_API_BODIES": f"file:{live_cap}/rawbodies",
+        env.update({"ANTHROPIC_BASE_URL": srv.base_url, "OTEL_LOG_RAW_API_BODIES": f"file:{live_cap}/rawbodies", "QAR_CAPTURE_DIR": live_cap,
                     "CLAUDE_CODE_ENABLE_TELEMETRY": "1", "OTEL_LOGS_EXPORTER": "none", "OTEL_METRICS_EXPORTER": "none"})
         sid = str(uuid.uuid4())
         cmd = [claude_bin, "-p", man["prompt"], "--model", man["model"], "--session-id", sid, "--output-format", "stream-json", "--verbose",
@@ -70,7 +72,8 @@ def replay_run(capture_dir: str, claude_bin: str, out_dir: str, policy: str = "r
         agree = {k: rep.get(k) == v for k, v in rec.items()}
         final = tree_hashes(ws)
         result = next((json.loads(l) for l in reversed(open(os.path.join(run_out, "stream.jsonl")).readlines()) if '"type":"result"' in l), {})
-        shutil.copytree(live_cap, os.path.join(run_out, "captures"), dirs_exist_ok=True)
+        if os.path.abspath(live_cap) != os.path.abspath(os.path.join(run_out, "captures")):
+            shutil.copytree(live_cap, os.path.join(run_out, "captures"), dirs_exist_ok=True)
         n = len(cassette.envelopes)
         served_ok = sum(v for k, v in ms["levels"].items() if k in ("exact", "normalized", "delta")) == n
         r = {"run": i, "exit_code": rc, "wall_s": round(wall, 1), "terminal_reason": result.get("terminal_reason"),

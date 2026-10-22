@@ -18,9 +18,8 @@ def main():
     results = []
     for r in rows:
         if only and r["label"] not in only: continue
-        cap = os.path.join(a.root, "runs", r["label"], "captures")
-        moved = os.path.join(out, r["label"], "recorded_captures")
-        if os.path.isdir(moved): cap = moved
+        ws = os.path.join(a.root, "runs", r["label"])
+        cap = next(c for c in (ws + ".recorded", ws + ".captures", os.path.join(ws, "captures")) if os.path.isdir(c))
         s = replay_run(cap, a.claude, os.path.join(out, r["label"]), runs=a.runs)
         s.update({"cohort": r["cohort"], "expect": r["expect"], "recorded_wall_s": r["wall_s"]})
         results.append(s); print(json.dumps({k: s[k] for k in ("label", "cohort", "expect", "model_calls", "r2", "tool_result_agreement", "extra_requests", "first_divergence", "wall_s")}), flush=True)
