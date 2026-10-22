@@ -1,0 +1,43 @@
+{
+  "hooks": {
+    "mapped": 35,
+    "records": 39,
+    "structural": 4,
+    "structural_names": {
+      "agent_hooks.on_start": 2,
+      "run_hooks.on_agent_start": 2
+    },
+    "unmapped": 0,
+    "unmapped_names": {}
+  },
+  "mapped": 59,
+  "merge": {
+    "input": 94,
+    "merged_away": 42,
+    "merged_groups": 26,
+    "output": 52
+  },
+  "native_signals": 70,
+  "structural": 9,
+  "tracing": {
+    "mapped": 24,
+    "records": 31,
+    "structural": 5,
+    "structural_names": {
+      "span.agent": 3,
+      "trace.end": 2
+    },
+    "unmapped": 2,
+    "unmapped_names": {
+      "span.custom:orders.db_lookup": 1,
+      "span.guardrail": 1
+    }
+  },
+  "unmapped": 2,
+  "unmapped_names": {
+    "span.custom:orders.db_lookup": 1,
+    "span.guardrail": 1
+  },
+  "v01_exception_rate": 0.02857142857142857,
+  "v01_exception_rate_tracing_only": 0.06451612903225806
+}
