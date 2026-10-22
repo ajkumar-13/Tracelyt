@@ -38,7 +38,7 @@ Proof F under 40%: **no** (100%). Proof B over 25% exceptions: **no** (3.5%). Fe
 4. Laminar posture decided: compete; acqui-merge as the only partnership form.
 
 ## 5. Phase 1 week-1 engineering backlog (from this report)
-Status 22 October 2026: Proof G executed, R2 pass (`proofs/proof-G-replay.md`); OpenAI Agents SDK capture in progress (`proofs/proof-B-openai-agents.md`); the rest tracked in `docs/phase1/00-kickoff.md`.
+Status 22 October 2026: Proof G executed, R2 pass (`proofs/proof-G-replay.md`); OpenAI Agents SDK capture done, 2.9% exception rate (`proofs/proof-B-openai-agents.md`); the rest tracked in `docs/phase1/00-kickoff.md`.
 Proof G at R2 and R3 on the proofA cassette; second-harness capture (OpenAI Agents SDK) for Proof B; OTLP receiver hardening and the shared hook adapter binary; workspace snapshotter and egress proxy for shell `fs_delta` and `network[]`; benchmark executions per `docs/phase0/benchmarks/`; first OTel proposal PR with Proof A evidence.
 
 ## 6. Repository map produced by Phase 0
